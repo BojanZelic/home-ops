@@ -1,0 +1,14 @@
+
+repositories:
+  - name: gitlab
+    url: https://charts.gitlab.io
+
+releases:
+- name: apparmor
+  namespace: gitlab-managed-apps
+  chart: gitlab/apparmor
+  version: 0.2.0
+  installed: true
+
+  values:
+    - values.yaml

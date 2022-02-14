@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+set -x
+
+kubectl cluster-info dump -o json | grep -m 1 -o "\-\-cluster-cidr=\S*" | sed -e 's/\-\-cluster\-cidr=//g'

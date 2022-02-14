@@ -1,0 +1,17 @@
+image:
+  repository: sentry
+  tag: "9.1.2" # Tag of last OSS Sentry, do not bump without license review
+
+ingress:
+  enabled: true
+  hostname: sentry.example.com
+  annotations:
+    kubernetes.io/ingress.class: nginx
+
+# Use a secure password for the database and keep it outside of your source code
+postgresql:
+  postgresqlPassword: {{ requiredEnv "SENTRY_POSTGRESQL_PASSWORD" }}
+
+service:
+  type: ClusterIP
+  nodePort:

@@ -1,0 +1,12 @@
+repositories:
+  - name: stable
+    url: https://charts.helm.sh/stable
+
+releases:
+- name: ingress
+  namespace: gitlab-managed-apps
+  chart: stable/nginx-ingress
+  version: 1.40.2
+  installed: true
+  values:
+    - values.yaml

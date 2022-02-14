@@ -1,0 +1,12 @@
+repositories:
+- name: elastic-stack
+  url: https://charts.gitlab.io
+
+releases:
+- name: elastic-stack
+  namespace: gitlab-managed-apps
+  chart: elastic-stack/elastic-stack
+  version: 3.0.0
+  installed: true
+  values:
+    - values.yaml

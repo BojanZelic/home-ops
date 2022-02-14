@@ -1,0 +1,6 @@
+name: cert-manager-crds
+version: v0.2.0
+appVersion: release-0.10
+description: "Local chart to install cert-manager CRDs"
+sources:
+  - "https://raw.githubusercontent.com/jetstack/cert-manager/release-0.10/deploy/manifests/00-crds.yaml"

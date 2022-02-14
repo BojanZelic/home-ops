@@ -1,0 +1,7 @@
+ebpf:
+  enabled: true
+auditLog:
+  enabled: true
+falco:
+  timeFormatISO8601: true
+  jsonOutput: true

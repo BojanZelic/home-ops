@@ -1,0 +1,12 @@
+repositories:
+- name: falcosecurity-charts
+  url: https://falcosecurity.github.io/charts/
+
+releases:
+- name: falco
+  namespace: gitlab-managed-apps
+  chart: falcosecurity-charts/falco
+  version: 1.15.7
+  installed: true
+  values:
+    - values.yaml

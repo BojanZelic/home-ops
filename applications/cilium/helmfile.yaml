@@ -1,0 +1,25 @@
+environments:
+  default:
+    values:
+    # Set to "gke" or "eks" based on your cluster type
+    - clusterType: ""
+---
+repositories:
+- name: cilium
+  url: https://helm.cilium.io
+
+releases:
+- name: cilium
+  namespace: gitlab-managed-apps
+  chart: cilium/cilium
+  version: 1.10.5
+  installed: true
+  wait: true
+  values:
+    - values.yaml
+{{- if eq .Values.clusterType "eks" }}
+    - values-eks.yaml
+{{- end }}
+{{- if eq .Values.clusterType "gke" }}
+    - values-gke.yaml.gotmpl
+{{- end }}

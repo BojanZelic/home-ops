@@ -1,0 +1,12 @@
+repositories:
+  - name: fluent
+    url: https://fluent.github.io/helm-charts
+
+releases:
+- name: fluentd
+  namespace: gitlab-managed-apps
+  chart: fluent/fluentd
+  version: 0.3.0
+  installed: true
+  values:
+    - values.yaml

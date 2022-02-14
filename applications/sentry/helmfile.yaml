@@ -1,0 +1,13 @@
+repositories:
+  - name: stable
+    url: https://charts.helm.sh/stable
+
+releases:
+- name: sentry
+  namespace: gitlab-managed-apps
+  chart: stable/sentry
+  version: 3.1.5
+  installed: true
+  timeout: 630
+  values:
+    - values.yaml.gotmpl

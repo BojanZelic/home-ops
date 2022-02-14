@@ -1,0 +1,89 @@
+repositories:
+- name: jetstack
+  url: https://charts.jetstack.io
+
+releases:
+- name: certmanager-crds
+  namespace: gitlab-managed-apps
+  chart: ./crds-chart
+  version: v0.2.0
+  installed: true
+
+  hooks:
+  - events: [prepare]
+    showlogs: true
+    command: wget
+    args:
+      - -O
+      - ./crds-chart/templates/00-crds.yaml
+      - https://raw.githubusercontent.com/jetstack/cert-manager/release-0.10/deploy/manifests/00-crds.yaml
+
+  # This event is necessary if you had previously installed CM through the UI
+  # with the legacy Gitlab Managed Apps v1 (One click install).
+  # This only needs to be run once with the pre-existing CM.
+  # Feel free to remove this hooks block afterwards, if you wish.
+  - events: [prepare]
+    showlogs: true
+    command: gl-adopt-crds-with-helm-v3
+    args:
+      - --pattern
+      - "certmanager.k8s.io"
+      - --release
+      - "certmanager-crds"
+      - --release-namespace
+      - "gitlab-managed-apps"
+
+- name: certmanager
+  namespace: gitlab-managed-apps
+  chart: jetstack/cert-manager
+  version: v0.10.1
+  installed: true
+  needs:
+    - gitlab-managed-apps/certmanager-crds
+  values:
+    - values.yaml
+    - values-default-issuer.yaml
+  hooks:
+  - events: ["presync"]
+    showlogs: true
+    command: "kubectl"
+    args: ["label", "--overwrite", "namespace", "gitlab-managed-apps", "certmanager.k8s.io/disable-validation=true"]
+
+  # Wait for the admission.certmanager.k8s.io apiservice to be ready
+  # See https://github.com/helm/helm/issues/6361
+  - events: ["postsync"]
+    showlogs: true
+    command: "sleep"
+    args: ["120"]
+
+- name: certmanager-issuer
+  namespace: gitlab-managed-apps
+  chart: ./issuer-chart
+  version: v0.1.0
+  installed: true
+  disableValidation: true
+  needs:
+    - gitlab-managed-apps/certmanager
+  values:
+    - letsEncryptClusterIssuer:
+        email: example@example.com
+
+  hooks:
+  # This event is necessary if you had previously installed CM through the UI
+  # with the legacy Gitlab Managed Apps v1 (One click install).
+  # This only needs to be run once with the pre-existing CM.
+  # Feel free to remove this hooks block afterwards, if you wish.
+  - events: [prepare]
+    showlogs: true
+    command: gl-adopt-resource-with-helm-v3
+    args:
+      - --kind
+      - clusterissuers
+      - --name
+      - "letsencrypt-prod"
+      - --namespace
+      - "gitlab-managed-apps"
+      - --release
+      - "certmanager-issuer"
+      - --release-namespace
+      - "gitlab-managed-apps"

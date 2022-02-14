@@ -1,0 +1,42 @@
+kind: Deployment
+
+service:
+  type: ClusterIP
+  annotations: {}
+  ports:
+  - name: syslog
+    protocol: UDP
+    containerPort: 5140
+
+fileConfigs:
+  01_sources.conf: |-
+    <source>
+      @type syslog
+      @label @SYSLOG
+      port 5140
+      bind 0.0.0.0
+      tag system
+    </source>
+
+  02_filters.conf: |-
+    <label @SYSLOG>
+      <match **>
+        @type relabel
+        @label @DISPATCH
+      </match>
+    </label>
+
+  04_outputs.conf: |-
+    <label @OUTPUT>
+      # Throw all occuring events away.
+      <match **>
+        @type null
+      </match>
+
+      # Route all events to Elasticsearch.
+      # <match **>
+      #   @type elasticsearch
+      #   host "elastic-stack-elasticsearch-master.gitlab-managed-apps"
+      #   port 9200
+      # </match>
+    </label>

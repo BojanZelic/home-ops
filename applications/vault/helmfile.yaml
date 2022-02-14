@@ -1,0 +1,12 @@
+repositories:
+- name: vault-helm
+  url: https://helm.releases.hashicorp.com
+
+releases:
+- name: vault
+  namespace: gitlab-managed-apps
+  chart: vault-helm/vault
+  version: 0.5.0
+  installed: true
+  values:
+    - values.yaml
