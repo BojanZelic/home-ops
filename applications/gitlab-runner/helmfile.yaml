@@ -4,7 +4,7 @@ repositories:
 
 releases:
 - name: runner
-  namespace: gitlab-managed-apps
+  namespace: gitlab-agent
   chart: gitlab/gitlab-agent
   #version: 0.40.0
   installed: true
