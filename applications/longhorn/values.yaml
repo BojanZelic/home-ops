@@ -1,2 +1,5 @@
 persistance:
   defaultClassReplicaCount: 2
+
+ingress:
+  enabled: true
