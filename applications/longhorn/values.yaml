@@ -3,3 +3,4 @@ persistance:
 
 ingress:
   enabled: true
+  host: zelic.io
