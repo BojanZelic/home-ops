@@ -25,16 +25,16 @@ variables:
 # free to replace gitlab-managed-apps by whatever that is in the script below.
 #-----------------------------------
 
-detect-helm2-releases:
-  extends: [.kube-context]
-  stage: test
-  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
-  environment:
-    name: production
-  script:
-    - gl-fail-if-helm2-releases-exist gitlab-managed-apps
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+# detect-helm2-releases:
+#   extends: [.kube-context]
+#   stage: test
+#   image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
+#   environment:
+#     name: production
+#   script:
+#     - gl-fail-if-helm2-releases-exist gitlab-managed-apps
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 apply:
   extends: [.kube-context]

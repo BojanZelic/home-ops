@@ -3,4 +3,4 @@ persistance:
 
 ingress:
   enabled: true
-  host: zelic.io
+  host: longhorn.internal.zelic.io
