@@ -5,8 +5,8 @@
 # variables:
 # Set the variable $KUBE_CONTEXT through the GitLab UI, or set it here by
 # uncommenting the following two lines and replacing the Agent's path with your own:
-# variables:
-#   KUBE_CONTEXT: path/to/your-agent-configuration-project:your-agent-name
+variables:
+  KUBE_CONTEXT: zelic.io/k8s-pi:k8s-pi
 
 .kube-context:
   before_script:
