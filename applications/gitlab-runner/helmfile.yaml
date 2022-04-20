@@ -4,10 +4,10 @@ repositories:
 
 releases:
 - name: runner
-  namespace: gitlab-agent
+  namespace: gitlab-managed-apps
   chart: gitlab/gitlab-agent
   #version: 0.40.0
-  installed: true
+  installed: false
   values:
     - values.yml.gotmpl
     #- values.yaml.gotmpl
