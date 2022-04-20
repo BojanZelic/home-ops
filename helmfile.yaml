@@ -21,6 +21,7 @@ helmfiles:
 #  - path: applications/cert-manager/helmfile.yaml
 #  - path: applications/sentry/helmfile.yaml
   - path: applications/gitlab-runner/helmfile.yaml
+  - path: applications/longhorn/helmfile.yaml
 #  - path: applications/elastic-stack/helmfile.yaml
 #  - path: applications/prometheus/helmfile.yaml
 #  - path: applications/vault/helmfile.yaml
