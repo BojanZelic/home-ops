@@ -35,9 +35,6 @@ detect-helm2-releases:
     - gl-fail-if-helm2-releases-exist gitlab-managed-apps
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  tags:
-    - cluster
-    - kubernetes
 
 apply:
   extends: [.kube-context]
@@ -50,6 +47,3 @@ apply:
     - gl-helmfile --file $CI_PROJECT_DIR/helmfile.yaml apply --suppress-secrets
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  tags:
-    - cluster
-    - kubernetes
