@@ -1,0 +1,2 @@
+persistance:
+  defaultClassReplicaCount: 2
