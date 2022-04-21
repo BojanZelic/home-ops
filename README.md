@@ -1,4 +1,4 @@
-# Cluster management template project
+# Zelic.io K8s Cluster
 
 Example [cluster management](https://docs.gitlab.com/ee/user/clusters/management_project.html) project.
 
