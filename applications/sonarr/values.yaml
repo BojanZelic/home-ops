@@ -11,3 +11,13 @@ ingress:
   # @default -- See values.yaml
   main:
     enabled: true
+    hosts:
+    - host: sonarr.internal.zelic.io
+      paths: []
+  
+persistence:
+  config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storageClass: longhorn
+    size: 1Gi
