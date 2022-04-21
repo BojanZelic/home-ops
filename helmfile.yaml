@@ -2,37 +2,7 @@ helmDefaults:
   atomic: true
   wait: true
 
-  # ---------------------  IMPORTANT ---------------------------
-  # Uncomment the paths below for the applications that you'd like to manage.
-  # By default all the helmfiles have `install:true`. So if you uncomment one of these
-  # helmfiles, the associated application will be tried to be installed or updated.
-  #
-  # You can set `install:false` to either uninstall the app from your cluster, or
-  # keep it uninstalled if you don't have it already installed.
-  #
-  # For more information, reference the Helmfile repository at:
-  # https://github.com/roboll/helmfile
-  # ------------------------------------------------------------
-
 helmfiles:
-
-#  - path: applications/cilium/helmfile.yaml
-#  - path: applications/ingress/helmfile.yaml
-#  - path: applications/cert-manager/helmfile.yaml
-#  - path: applications/sentry/helmfile.yaml
   - path: applications/gitlab-runner/helmfile.yaml
   - path: applications/longhorn/helmfile.yaml
-#  - path: applications/elastic-stack/helmfile.yaml
-#  - path: applications/prometheus/helmfile.yaml
-#  - path: applications/vault/helmfile.yaml
-#  - path: applications/fluentd/helmfile.yaml
-#  - path: applications/falco/helmfile.yaml
-#  - path: applications/apparmor/helmfile.yaml
-
-# DEPRECATED: cert-manager-legacy SHOULD NOT be used for new installations. It
-# DOES NOT WORK on Kubernetes versions 1.20 or newer. It can be used to take
-# over an existing cert-manager release from GitLab 13.x. But even then, it is
-# recommneded that you upgrade as soon as possible, because it WILL BREAK on
-# Kubernetes 1.20 and newer.
-#
-#  - path: applications/cert-manager-legacy/helmfile.yaml
+  - path: applications/sonarr/helmfile.yaml
