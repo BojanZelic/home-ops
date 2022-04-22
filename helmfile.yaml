@@ -5,4 +5,8 @@ helmDefaults:
 helmfiles:
   - path: applications/gitlab-runner/helmfile.yaml
   - path: applications/longhorn/helmfile.yaml
+  - path: applications/nzbget/helmfile.yaml
   - path: applications/sonarr/helmfile.yaml
+  - path: applications/radarr/helmfile.yaml
+  - path: applications/nzbhydra/helmfile.yaml
+  - path: applications/bazarr/helmfile.yaml

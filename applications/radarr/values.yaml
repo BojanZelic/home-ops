@@ -7,12 +7,10 @@ podSecurityContext:
   fsGroup: 1000
 
 ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
   main:
     enabled: true
     hosts:
-    - host: sonarr.internal.zelic.io
+    - host: radarr.internal.zelic.io
       paths:
         - path: /
           pathType: Prefix
@@ -30,8 +28,9 @@ persistence:
     existingClaim: nzbget-downloads
     accessMode: ReadWriteMany
     size: 200Gi
-  tv:
+  media:
     enabled: true
-    storageClass: "tv-storage"
+    mountPath: /media
     accessMode: ReadWriteMany
-    size: 2Ti
+    size: 3Ti
+    storageClass: movies-storage

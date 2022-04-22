@@ -3,10 +3,10 @@ repositories:
     url: https://k8s-at-home.com/charts/
 
 releases:
-- name: sonarr
+- name: nzbget
   namespace: media-services
-  version: 15.2.1
-  chart: k8s-at-home/sonarr
+  version: 12.2.0
+  chart: k8s-at-home/nzbget
   installed: true
   values:
     - values.yaml

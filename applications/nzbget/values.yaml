@@ -12,7 +12,7 @@ ingress:
   main:
     enabled: true
     hosts:
-    - host: sonarr.internal.zelic.io
+    - host: nzbget.internal.zelic.io
       paths:
         - path: /
           pathType: Prefix
@@ -21,17 +21,10 @@ persistence:
   config:
     enabled: true
     storageClass: longhorn
-    accessMode: ReadWriteOnce
     size: 1Gi
   downloads:
     enabled: true
     mountPath: /downloads
     storageClass: nzbget-downloads
-    existingClaim: nzbget-downloads
     accessMode: ReadWriteMany
     size: 200Gi
-  tv:
-    enabled: true
-    storageClass: "tv-storage"
-    accessMode: ReadWriteMany
-    size: 2Ti

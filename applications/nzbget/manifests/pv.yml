@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nzbget-downloads
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nzbget-downloads
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /NAS/media/downloads
+    server: proxmox.zelic.io
