@@ -12,6 +12,10 @@ variables:
   before_script:
     - if [ -n "$KUBE_CONTEXT" ]; then kubectl config use-context "$KUBE_CONTEXT"; fi
 
+stages:
+  - test
+  - deploy
+
 # -------- Helm v2 release detection
 # The detect-helm2-release will try to identify if you have any app installed with Helm v2.
 # If so, it will fail the pipeline and ask you to migrate those apps to Helm v3, since
@@ -35,6 +39,17 @@ variables:
 #     - gl-fail-if-helm2-releases-exist gitlab-managed-apps
 #   rules:
 #     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+plan:
+  extends: [.kube-context]
+  stage: test
+  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.3.2"
+  environment:
+    name: production
+  script:
+    - gl-helmfile --file $CI_PROJECT_DIR/helmfile.yaml diff --suppress-secrets
+  only:
+    - merge_requests
 
 apply:
   extends: [.kube-context]
