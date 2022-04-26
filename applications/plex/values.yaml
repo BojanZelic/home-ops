@@ -1,0 +1,101 @@
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+env:
+  # -- Set the container timezone
+  TZ: UTC
+  NODE_IP:
+    valueFrom:
+        fieldRef: 
+          fieldPath: status.hostIP
+  ADVERTISE_IP: http://10.10.100.49:32400/,http://plex.internal.zelic.io/
+  # ALLOWED_NETWORKS:
+  #PLEX_CLAIM: myPlexClaim
+  PLEX_PREFERENCE_1: "FriendlyName=Bojan"
+  PLEX_PREFERENCE_2: "EnableIPv6=0"
+  PLEX_PREFERENCE_3: "logDebug=0"
+  PLEX_PREFERENCE_4: "DisableTLSv1_0=1"
+  PLEX_PREFERENCE_5: "LanNetworksBandwidth=10.0.0.0/8"
+  PLEX_PREFERENCE_6: "TranscoderQuality=2"
+  PLEX_PREFERENCE_7: "TreatWanIpAsLocal=0"
+  PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=fast"
+
+service:
+  main:
+    primary: true
+    type: NodePort
+    ports:
+      http:
+        #enabled: true
+        nodePort: 32400
+        port: 32400
+        protocol: TCP
+        targetPort: 32400
+    externalTrafficPolicy: Local
+  dnla-tcp:
+    enabled: true
+    type: NodePort
+    ports:
+      dnla-tcp:
+        enabled: true
+        port: 32469
+        protocol: TCP
+        targetPort: 32469
+    externalTrafficPolicy: Local
+  dnla-udp:
+    enabled: true
+    type: NodePort
+    ports:
+      dnla-udp:
+        enabled: true
+        port: 1900
+        protocol: TCP
+        targetPort: 1900
+    externalTrafficPolicy: Local
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storageClass: longhorn
+    size: 20Gi
+
+  transcode:
+    enabled: false
+    mountPath: /transcode
+
+  movies:
+    enabled: true
+    accessMode: ReadWriteMany
+    size: 3Ti
+    storageClass: movies-storage
+    existingClaim: radarr-media
+
+  tv:
+    enabled: true
+    storageClass: "tv-storage"
+    existingClaim: sonarr-tv
+    accessMode: ReadWriteMany
+    size: 2Ti
+
+  personal-videos:
+    enabled: true
+    storageClass: personal-videos
+    accessMode: ReadWriteMany
+    mountPath: /personal_videos
+    size: 500Gi
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    hosts:
+    - host: plex.internal.zelic.io
+      paths:
+        - path: /
+          pathType: Prefix

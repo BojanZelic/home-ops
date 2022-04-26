@@ -1,0 +1,90 @@
+
+# -- See the following files for additional environment variables:
+# https://github.com/paperless-ngx/paperless-ngx/tree/main/docker/compose/
+# https://github.com/paperless-ngx/paperless-ngx/blob/main/paperless.conf.example
+# @default -- See below
+env:
+  # -- Project name
+  COMPOSE_PROJECT_NAME: paperless
+  # -- Redis to use
+  PAPERLESS_REDIS: redis://paperless-redis-master:6379
+  # -- OCR languages to install
+  PAPERLESS_OCR_LANGUAGE: eng
+  USERMAP_UID: 1000
+  USERMAP_GID: 1000
+  PAPERLESS_TIME_ZONE: America/Phoenix
+  # -- Database host to use
+  PAPERLESS_DBHOST:
+  # -- Port to use
+  PAPERLESS_PORT: 8000
+
+  PAPERLESS_OCR_LANGUAGES: eng
+  PAPERLESS_INLINE_DOC: true
+  PAPERLESS_FORGIVING_OCR: true
+  PAPERLESS_DATE_ORDER: MDY
+  PAPERLESS_AUTO_LOGIN_USERNAME: root
+
+# -- Configures service settings for the chart.
+# @default -- See values.yaml
+service:
+  main:
+    ports:
+      http:
+        port: 8000
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    hosts:
+    - host: paperless.internal.zelic.io
+      paths:
+        - path: /
+          pathType: Prefix
+
+persistence:
+  # -- Configure persistence for data.
+  # @default -- See values.yaml
+  data:
+    enabled: true
+    mountPath: /usr/src/paperless/data
+    accessMode: ReadWriteOnce
+    storageClass: "longhorn"
+    size: 100Mi
+
+  # -- Configure persistence for media.
+  # @default -- See values.yaml
+  media:
+    enabled: false
+    mountPath: /usr/src/paperless/media
+    accessMode: ReadWriteOnce
+    emptyDir:
+      enabled: true
+  # -- Configure volume to monitor for new documents.
+  # @default -- See values.yaml
+  consume:
+    enabled: false
+    mountPath: /usr/src/paperless/consume
+    accessMode: ReadWriteOnce
+    emptyDir:
+      enabled: true
+  # -- Configure export volume.
+  # @default -- See values.yaml
+  export:
+    enabled: false
+
+# -- Enable and configure redis subchart under this key.
+#    For more options see [redis chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/redis)
+# @default -- See values.yaml
+redis:
+  enabled: true
+  auth:
+    enabled: false
+  architecture: standalone
+  global:
+    storageClass: longhorn
+  image:
+    registry: ghcr.io
+    repository: zcube/bitnami-compat/redis
+    tag: 6.2.6-debian-10-r0

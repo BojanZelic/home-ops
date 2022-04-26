@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: personal-videos
+  namespace: media-services
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  storageClassName: personal-videos
+  volumeMode: Filesystem
+  volumeName: personal-videos

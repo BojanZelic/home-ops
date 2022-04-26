@@ -1,0 +1,12 @@
+repositories:
+  - name: k8s-at-home
+    url: https://k8s-at-home.com/charts/
+
+releases:
+- name: home-assistant
+  namespace: home-assistant
+  version: 13.0.2
+  chart: k8s-at-home/home-assistant
+  installed: true
+  values:
+    - values.yaml
