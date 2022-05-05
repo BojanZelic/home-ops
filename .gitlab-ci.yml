@@ -48,7 +48,7 @@ plan:
     name: production
   script:
     - gl-helmfile --file $CI_PROJECT_DIR/helmfile.yaml diff --suppress-secrets
-    - kubectl diff -k ./
+    - kustomize build ./ | kubectl diff -f -
   only:
     - merge_requests
 
@@ -61,6 +61,6 @@ apply:
   script:
     - gl-ensure-namespace gitlab-managed-apps
     - gl-helmfile --file $CI_PROJECT_DIR/helmfile.yaml apply --suppress-secrets
-    - kubectl apply -k ./
+    - kustomize build ./ | kubectl apply -f -
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
