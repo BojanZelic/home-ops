@@ -1,0 +1,32 @@
+# podSecurityContext:
+#   runAsUser: 1000
+#   runAsGroup: 1000
+#   fsGroup: 1000
+
+env:
+  # -- Set the container timezone
+  TZ: UTC
+
+# -- Configure persistence settings for the chart under this key.
+# @default -- See values.yaml
+persistence:
+  config:
+    enabled: true
+    accessMode: ReadWriteOnce
+    storageClass: longhorn
+    size: 1Gi
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: true
+    hosts:
+    - host: homeassistant.internal.zelic.io
+      paths:
+        - path: /
+          pathType: Prefix
+    - host: homeassistant.zelic.io
+      paths:
+        - path: /
+          pathType: Prefix

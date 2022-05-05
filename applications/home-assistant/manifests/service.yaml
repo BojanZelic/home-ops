@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant-tunnel
+  namespace: home-assistant
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: homeassistant.zelic.io
+    external-dns.alpha.kubernetes.io/ttl: "120"
+spec:
+  type: ExternalName
+  externalName: 03d39176-e294-4b8a-8895-23b83f7e1063.cfargotunnel.com
