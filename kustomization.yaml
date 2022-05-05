@@ -3,6 +3,5 @@ kind: Kustomization
 
 resources:
   - applications/home-assistant
-  - applications/cloudflare
   - applications/plex
   - applications/nzbget
