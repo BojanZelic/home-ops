@@ -7,3 +7,4 @@ resources:
   - applications/home-assistant
   - applications/plex
   - applications/nzbget
+  - applications/mosquitto
