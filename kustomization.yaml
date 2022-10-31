@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - applications/cloudflare
+  - applications/external-dns
   - applications/home-assistant
   - applications/plex
   - applications/nzbget

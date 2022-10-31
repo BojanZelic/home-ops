@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
+      containers:
+      - name: external-dns
+        args:
+        - --source=ingress # ingress is also possible
+        - --domain-filter=zelic.io # (optional) limit to only example.com domains; change to match the zone created above.
+        - --exclude-domains=internal.zelic.io
+        - --zone-id-filter=$(CF_ZONE_ID_FILTER) # (optional) limit to a specific zone.
+        - --provider=cloudflare
+        - --cloudflare-proxied # (optional) enable the proxy feature of Cloudflare (DDOS protection, CDN...)
+        env:
+        - name: CF_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare
+              key: CF_API_KEY
+        - name: CF_API_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare
+              key: CF_API_EMAIL
+        - name: CF_ZONE_ID_FILTER
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare
+              key: CF_ZONE_ID_FILTER
