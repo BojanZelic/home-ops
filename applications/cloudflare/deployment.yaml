@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflare-tunnel
+  labels:
+    app: cloudflare-tunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflare-tunnel
+  template:
+    metadata:
+      labels:
+        app: cloudflare-tunnel
+    spec:
+      containers:
+      - name: cloudflare-tunnel
+        image: ghcr.io/synpse-hq/cloudflared:latest
+        args:
+          - tunnel
+          - run
+          - --url=http://traefik.kube-system.svc:80
+          - --token=$(TUNNEL_TOKEN)
+        env:
+          - name: TUNNEL_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: cloudflare
+                key: TUNNEL_TOKEN
+          # - name: TUNNEL_PROTO_LOGLEVEL
+          #   value: debug
