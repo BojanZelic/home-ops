@@ -1,2 +1,2 @@
 
-secretKeyRef: cloudflare-creds
+secretRef: cloudflare-creds
