@@ -3,6 +3,7 @@ helmDefaults:
   wait: true
 
 helmfiles:
+  - path: applications/sealed-secrets/helmfile.yaml
   - path: applications/gitlab-runner/helmfile.yaml
   - path: applications/longhorn/helmfile.yaml
   - path: applications/nzbget/helmfile.yaml
@@ -10,4 +11,4 @@ helmfiles:
   - path: applications/radarr/helmfile.yaml
   - path: applications/nzbhydra/helmfile.yaml
   - path: applications/bazarr/helmfile.yaml
-  - path: applications/sealed-secrets/helmfile.yaml
+  - path: applications/cloudflare-zero-trust/helmfile.yaml
