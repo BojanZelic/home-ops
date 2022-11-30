@@ -1,0 +1,14 @@
+apiVersion: cloudflare.zelic.io/v1alpha1
+kind: CloudflareAccessApplication
+metadata:
+  name: home-assistant
+  namespace: home-assistant
+spec:
+  name: Home Assistant
+  domain: home-assistant.zelic.io
+  policies: 
+    - name: Allow Home
+      decision: allow
+      include:
+        - accessGroups:
+          - f0ed5561-144d-435e-b1ea-35f038f4067c
