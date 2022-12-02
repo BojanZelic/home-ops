@@ -11,6 +11,6 @@ spec:
       decision: allow
       include:
         - accessGroups:
-            valueFrom:
-              name: default-cloudflare-accessgroup
-              namespace: zero-trust-system
+          - valueFrom:
+            name: default-cloudflare-accessgroup
+            namespace: zero-trust-system
