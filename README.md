@@ -1,12 +1,19 @@
 # Zelic.io K8s Cluster
 
-Example [cluster management](https://docs.gitlab.com/ee/user/clusters/management_project.html) project.
+Hello :wave:
 
-This project is based on a GitLab [Project Template](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+Welcome to my Homelab cluster. Feel free to poke around
 
-For more information, see [the documentation for this template](https://docs.gitlab.com/ee/user/clusters/management_project_template.html).
+## OnPrem Tech
+| Hardware                | Description |
+| ----------------------  | ----------- |
+| Rasberry Pi CM4         | 8GB         |
+| Raspberry Pi 4 Model B  | 2GB         |
 
-Improvements can be proposed in the [original project](https://gitlab.com/gitlab-org/project-templates/cluster-management).
+## Architecture
+* I expose my services using Cloudflare Argo Tunnels
+* I 
+
 
 ## Supported Kubernetes versions
 
