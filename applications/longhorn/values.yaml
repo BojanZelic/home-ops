@@ -3,4 +3,6 @@ persistance:
 
 ingress:
   enabled: true
-  host: longhorn.internal.zelic.io
+  host: longhorn.zelic.io
+  annotations: 
+    external-dns.alpha.kubernetes.io/target: 03d39176-e294-4b8a-8895-23b83f7e1063.cfargotunnel.com

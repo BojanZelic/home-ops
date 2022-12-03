@@ -9,3 +9,4 @@ resources:
   - applications/plex
   - applications/nzbget
   - applications/mosquitto
+  - applications/longhorn

@@ -1,0 +1,16 @@
+apiVersion: cloudflare.zelic.io/v1alpha1
+kind: CloudflareAccessApplication
+metadata:
+  name: longhorn-system
+  namespace: longhorn-system
+spec:
+  name: Longhorn Management
+  domain: longhorn.zelic.io
+  policies: 
+    - name: Allow Home
+      decision: allow
+      include:
+        - accessGroups:
+          - valueFrom:
+              name: default-cloudflare-accessgroup
+              namespace: zero-trust-system
