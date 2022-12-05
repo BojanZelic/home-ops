@@ -6,7 +6,7 @@
 
 ### Zelic.io Home K8s Cluster :octocat:
 
-_... managed with Gitlab CI/CD_ 🤖
+_... managed with Gitlab CI/CD & Renovate_ 🤖
 
 </div>
 
@@ -35,8 +35,12 @@ Currently I'm running K3s - Kubernetes version 1.22
 | Google Coral TPU (x1)         |                       |
 | ProLiant ML10 v2 (x1)         | Used as a NAS         |
 
-## Cloud
+![Architecture](./docs/img/architecture.excalidraw.png)
 
+## DNS
+DNS is hosted on Cloudflare; Cloudflare will proxy all requests to prevent things like DDOS;
+
+## Cloudflare
 Instead of portforwarding services, I expose my services using Cloudflare Argo Tunnels, I use Cloudflare Access Applications to limit who can access my self-hosted resources
 
 ## Zero Trust

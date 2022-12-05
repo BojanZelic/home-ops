@@ -1,0 +1,10 @@
+apiVersion: cloudflare.zelic.io/v1alpha1
+kind: CloudflareAccessGroup
+metadata:
+  name: default-cloudflare-accessgroup
+  namespace: zero-trust-system
+spec:
+  name: Zelic Home
+  include:
+    - emails:
+      - bnzelic@gmail.com
