@@ -20,7 +20,7 @@ releases:
 - name: certmanager
   namespace: gitlab-managed-apps
   chart: jetstack/cert-manager
-  version: v1.7.1
+  version: v1.10.1
   installed: true
   needs:
     - gitlab-managed-apps/certmanager-crds
