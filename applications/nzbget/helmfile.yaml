@@ -5,7 +5,7 @@ repositories:
 releases:
 - name: nzbget
   namespace: media-services
-  version: 12.2.0
+  version: 12.4.2
   chart: k8s-at-home/nzbget
   installed: true
   values:
