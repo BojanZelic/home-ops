@@ -11,3 +11,5 @@ resources:
   - applications/mosquitto
   - applications/longhorn
   - applications/nzbhydra
+  - applications/sonarr
+  - applications/radarr
