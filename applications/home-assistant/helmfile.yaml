@@ -5,7 +5,7 @@ repositories:
 releases:
 - name: home-assistant
   namespace: home-assistant
-  version: 13.1.3
+  version: 13.4.2
   chart: k8s-at-home/home-assistant
   installed: true
   values:
