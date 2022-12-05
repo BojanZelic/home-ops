@@ -11,8 +11,14 @@ ingress:
   # @default -- See values.yaml
   main:
     enabled: true
+    annotations: 
+      external-dns.alpha.kubernetes.io/target: 03d39176-e294-4b8a-8895-23b83f7e1063.cfargotunnel.com
     hosts:
     - host: sonarr.internal.zelic.io
+      paths:
+        - path: /
+          pathType: Prefix
+    - host: sonarr.zelic.io
       paths:
         - path: /
           pathType: Prefix

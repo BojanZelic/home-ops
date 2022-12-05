@@ -7,10 +7,18 @@ podSecurityContext:
   fsGroup: 1000
 
 ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
   main:
     enabled: true
+    annotations: 
+      external-dns.alpha.kubernetes.io/target: 03d39176-e294-4b8a-8895-23b83f7e1063.cfargotunnel.com
     hosts:
     - host: radarr.internal.zelic.io
+      paths:
+        - path: /
+          pathType: Prefix
+    - host: radarr.zelic.io
       paths:
         - path: /
           pathType: Prefix
