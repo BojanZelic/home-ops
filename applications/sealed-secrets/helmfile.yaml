@@ -5,7 +5,7 @@ repositories:
 releases:
 - name: sealed-secrets
   namespace: sealed-secrets
-  version: 2.7.0
+  version: 2.7.1
   chart: bitnami-labs/sealed-secrets
   installed: true
   values:
