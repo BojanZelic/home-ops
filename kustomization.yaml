@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - applications/cloudflare
   - applications/cloudflare-zero-trust
+  - applications/zero-trust-system
   - applications/external-dns
   - applications/home-assistant
   - applications/plex
