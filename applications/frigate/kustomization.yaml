@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - manifests/pv.yaml
-  - manifests/secret-enc.yaml
+  - manifests/secret.yaml
