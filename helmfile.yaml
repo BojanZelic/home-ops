@@ -11,4 +11,6 @@ helmfiles:
   - path: applications/radarr/helmfile.yaml
   - path: applications/nzbhydra/helmfile.yaml
   - path: applications/bazarr/helmfile.yaml
+  - path: applications/home-assistant/helmfile.yaml
+  - path: applications/frigate/helmfile.yaml
   - path: applications/cloudflare-zero-trust/helmfile.yaml

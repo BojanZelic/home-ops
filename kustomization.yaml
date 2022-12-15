@@ -14,3 +14,4 @@ resources:
   - applications/nzbhydra
   - applications/sonarr
   - applications/radarr
+  - applications/frigate
