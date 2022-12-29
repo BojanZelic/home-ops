@@ -16,7 +16,7 @@ Welcome to my Homelab cluster.
 
 ## ⛵ Kubernetes
 
-Currently I'm running K3s - Kubernetes version 1.22
+Currently I'm running K3s - Kubernetes version 1.24
 
 ### Core Components
 
