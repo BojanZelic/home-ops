@@ -3,4 +3,4 @@ kind: Kustomization
 
 namespace: system-upgrade
 resources:
-  - github.com/kubernetes-sigs/descheduler/kubernetes/cronjob?ref=v0.24.0
+  - github.com/kubernetes-sigs/descheduler/kubernetes/cronjob?ref=v0.26.0
