@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - applications/system-upgrade-controller
+  - applications/descheduler
   - applications/cloudflare
   - applications/cloudflare-zero-trust
   - applications/zero-trust-system
