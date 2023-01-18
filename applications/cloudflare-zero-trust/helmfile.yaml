@@ -6,7 +6,7 @@ releases:
 - name: cloudflare-zero-trust-operator
   namespace: zero-trust-system
   chart: zelic/cloudflare-zero-trust-operator
-  version: 0.1.7
+  version: 0.1.8
   installed: true
   createNamespace: true
   values:
