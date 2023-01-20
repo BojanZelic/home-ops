@@ -43,7 +43,7 @@ stages:
 plan:
   extends: [.kube-context]
   stage: test
-  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.7.0"
+  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.9.0"
   environment:
     name: production
   script:
@@ -55,7 +55,7 @@ plan:
 apply:
   extends: [.kube-context]
   stage: deploy
-  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.7.0"
+  image: "registry.gitlab.com/gitlab-org/cluster-integration/cluster-applications:v1.9.0"
   environment:
     name: production
   script:
