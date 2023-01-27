@@ -19,7 +19,7 @@ image:
 # @default -- See below
 env:
   # -- Set the container timezone
-  ADVERTISE_IP: http://10.10.100.49:32400/,http://plex.internal.zelic.io/
+  ADVERTISE_IP: http://$(NODE_IP):32400/,http://plex.internal.zelic.io/
   NODE_IP: 
     valueFrom:
       fieldRef:
