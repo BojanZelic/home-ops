@@ -7,5 +7,5 @@ configurations:
 namespace: zero-trust-system
 
 resources:
-  - https://github.com/BojanZelic/cloudflare-zero-trust-operator//config/default?ref=prefer-api-token-over-email
+  - https://github.com/BojanZelic/cloudflare-zero-trust-operator//config/default?ref=0.1.9
   - secret.yaml
