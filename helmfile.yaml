@@ -14,4 +14,3 @@ helmfiles:
   - path: applications/plex/helmfile.yaml
   - path: applications/home-assistant/helmfile.yaml
   - path: applications/frigate/helmfile.yaml
-  - path: applications/cloudflare-zero-trust/helmfile.yaml
