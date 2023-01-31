@@ -17,4 +17,3 @@ resources:
   - applications/sonarr
   - applications/radarr
   - applications/frigate
-  - applications/cloudflare-zero-trust
