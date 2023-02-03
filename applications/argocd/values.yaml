@@ -1,6 +1,5 @@
 ## Server
 server:
-
   ingress:
     # -- Enable an ingress resource for the Argo CD server
     enabled: true
@@ -44,3 +43,7 @@ server:
 
     # -- Uses `server.service.servicePortHttps` instead `server.service.servicePortHttp`
     https: false
+
+configs:
+  params:
+    server.insecure: true
