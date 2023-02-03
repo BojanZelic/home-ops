@@ -3,6 +3,7 @@ helmDefaults:
   wait: true
 
 helmfiles:
+  - path: applications/argocd/helmfile.yaml
   - path: applications/sealed-secrets/helmfile.yaml
   - path: applications/gitlab-runner/helmfile.yaml
   - path: applications/longhorn/helmfile.yaml
