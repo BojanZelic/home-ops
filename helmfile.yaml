@@ -3,6 +3,7 @@ helmDefaults:
   wait: true
 
 helmfiles:
+  - path: applications/argocd/helmfile.yaml
   - path: applications/sealed-secrets/helmfile.yaml
   - path: applications/gitlab-runner/helmfile.yaml
   - path: applications/longhorn/helmfile.yaml
@@ -14,4 +15,3 @@ helmfiles:
   - path: applications/plex/helmfile.yaml
   - path: applications/home-assistant/helmfile.yaml
   - path: applications/frigate/helmfile.yaml
-  - path: applications/cloudflare-zero-trust/helmfile.yaml

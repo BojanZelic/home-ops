@@ -1,0 +1,5 @@
+nameReference:
+  - kind: SealedSecret
+    fieldSpecs:
+      - path: spec/template/spec/containers/env/valueFrom/secretKeyRef/name
+        kind: Deployment
