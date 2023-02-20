@@ -16,6 +16,9 @@ spec:
     - repoURL: https://github.com/BojanZelic/home-ops.git
       targetRevision: HEAD
       ref: values
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/argocd/manifests
+      targetRevision: HEAD
 
   # Source of the application manifests
   # sources:
