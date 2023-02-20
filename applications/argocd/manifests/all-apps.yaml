@@ -4,22 +4,17 @@ metadata:
   name: all-apps
   namespace: argo-system
 spec:
-  template:
-    metadata:
-      name: all-apps
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/BojanZelic/home-ops.git
-        targetRevision: master
-        path: applications
-        directory:
-          recurse: true
-          include: '**/application.yaml'
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: argo-system
-      # syncPolicy:
-      #   automated:
-      #     prune: true
-      #     selfHeal: true
+  project: home-ops
+  source:
+    repoURL: https://github.com/BojanZelic/home-ops.git
+    targetRevision: master
+    path: applications
+    directory:
+      recurse: true
+      include: '**/application.yaml'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-system
+  syncPolicy:
+    automated:
+      prune: true
