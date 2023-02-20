@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: media-services
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://k8s-at-home.com/charts/
+      targetRevision: 10.6.2
+      chart: bazarr
+      helm:
+        releaseName: bazarr
+        valueFiles:
+        - $values/applications/bazarr/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
