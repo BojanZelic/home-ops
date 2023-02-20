@@ -9,11 +9,12 @@ spec:
       kind: '*'
   description: Home K8s Cluster
   destinations:
-    - name: in-cluster
-      namespace: vend
+    - namespace: '!kube-system'
       server: 'https://kubernetes.default.svc'
   namespaceResourceWhitelist:
     - group: '*'
       kind: '*'
   sourceRepos:
-    - 'https://github.com/BojanZelic/home-ops'
+    - '*'
+    # - 'https://github.com/BojanZelic/home-ops'
+    # - 'https://argoproj.github.io/argo-helm'
