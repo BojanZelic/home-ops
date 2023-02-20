@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: home-ops
+  namespace: argo-system
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  description: Home K8s Cluster
+  destinations:
+    - name: in-cluster
+      namespace: vend
+      server: 'https://kubernetes.default.svc'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  sourceRepos:
+    - 'https://github.com/BojanZelic/home-ops'

@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://argoproj.github.io/argo-helm
+      targetRevision: 5.20.3
+      chart: argo-cd
+      helm:
+        releaseName: argo
+        valueFiles:
+        - $values/applications/argocd/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+
+  # Source of the application manifests
+  # sources:
+  #   chart: argo-cd
+  #   repoURL: https://argoproj.github.io/argo-helm
+  #   targetRevision: 5.19.14
+  #   helm:
+  #     releaseName: argo
+  #     valueFiles:
+  #     - values.yaml
+  
+  # # Sources field specifies the list of sources for the application
+  # sources:
+  #   - repoURL: https://github.com/BojanZelic/home-ops.git  # Can point to either a Helm chart repo or a git repo.
+  #     targetRevision: HEAD  # For Helm, this refers to the chart version.
+  #     path: applications/argocd  # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
+  #     #ref: my-repo  # For Helm, acts as a reference to this source for fetching values files from this source. Has no meaning when under `source` field
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    # cluster API URL
+    server: https://kubernetes.default.svc
+    namespace: argo-system
