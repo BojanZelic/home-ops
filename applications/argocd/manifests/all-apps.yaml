@@ -7,7 +7,7 @@ spec:
   project: home-ops
   source:
     repoURL: https://github.com/BojanZelic/home-ops.git
-    targetRevision: master
+    targetRevision: main
     path: applications
     directory:
       recurse: true
