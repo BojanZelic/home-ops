@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bazarr
-  namespace: media-services
+  namespace: argo-system
 spec:
   project: home-ops
   sources:
@@ -17,7 +17,9 @@ spec:
       targetRevision: HEAD
       ref: values
   destination:
+  destination:
     server: https://kubernetes.default.svc
+    namespace: media-services
   syncPolicy:
     automated:
       prune: true
