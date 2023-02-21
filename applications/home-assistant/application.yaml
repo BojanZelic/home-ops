@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-assistant
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://k8s-at-home.com/charts/
+      targetRevision: 13.4.2
+      chart: home-assistant
+      helm:
+        releaseName: home-assistant
+        valueFiles:
+        - $values/applications/home-assistant/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/home-assistant/manifests
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: home-assistant
+  syncPolicy:
+    automated:
+      prune: true
