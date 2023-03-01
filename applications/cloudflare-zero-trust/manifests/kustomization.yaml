@@ -7,5 +7,5 @@ configurations:
 namespace: zero-trust-system
 
 resources:
-  - https://github.com/BojanZelic/cloudflare-zero-trust-operator//config/default?ref=0.2.0
+  - https://github.com/BojanZelic/cloudflare-zero-trust-operator//config/default?ref=0.2.1
   - secret.yaml
