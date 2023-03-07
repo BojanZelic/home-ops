@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://charts.longhorn.io/
+      targetRevision: 1.4.0
+      chart: longhorn
+      helm:
+        releaseName: longhorn
+        valueFiles:
+        - $values/applications/longhorn/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/longhorn/manifests
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: longhorn-system
+  syncPolicy:
+    automated:
+      prune: true
