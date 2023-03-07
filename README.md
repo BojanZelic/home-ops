@@ -6,7 +6,7 @@
 
 ### Zelic.io Home K8s Cluster :octocat:
 
-_... managed with Gitlab CI/CD & Renovate_ 🤖
+_... managed with Argo CD & Renovate_ 🤖
 
 </div>
 
