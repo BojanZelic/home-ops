@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nzbget
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://k8s-at-home.com/charts/
+      targetRevision: 12.4.2
+      chart: nzbget
+      helm:
+        releaseName: nzbget
+        valueFiles:
+        - $values/applications/nzbget/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/nzbget/manifests
+      targetRevision: HEAD
+  destination:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media-services
+  syncPolicy:
+    automated:
+      prune: true
