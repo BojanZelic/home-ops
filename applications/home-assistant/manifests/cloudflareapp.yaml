@@ -6,6 +6,7 @@ metadata:
 spec:
   name: Home Assistant
   domain: home-assistant.zelic.io
+  autoRedirectToIdentity: true
   policies: 
     - name: Allow Home
       decision: allow

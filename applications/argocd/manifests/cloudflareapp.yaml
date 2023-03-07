@@ -6,6 +6,7 @@ metadata:
 spec:
   name: ArgoCD
   domain: argocd.zelic.io
+  autoRedirectToIdentity: true
   policies: 
     - name: Allow Home
       decision: allow

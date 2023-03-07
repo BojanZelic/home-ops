@@ -6,6 +6,7 @@ metadata:
 spec:
   name: Radarr
   domain: radarr.zelic.io
+  autoRedirectToIdentity: true
   policies: 
     - name: Allow Home
       decision: allow

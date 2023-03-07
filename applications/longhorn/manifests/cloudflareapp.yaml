@@ -6,6 +6,7 @@ metadata:
 spec:
   name: Longhorn Management
   domain: longhorn.zelic.io
+  autoRedirectToIdentity: true
   policies: 
     - name: Allow Home
       decision: allow
