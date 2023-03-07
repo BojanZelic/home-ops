@@ -4,6 +4,6 @@
     "config:base"
   ],
   "argocd": {
-    "fileMatch": ["applications/.*/application.*\\.yaml"]
+    "fileMatch": ["application\\.yaml"]
   }
 }
