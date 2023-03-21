@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nzbhydra
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://k8s-at-home.com/charts/
+      targetRevision: 10.4.2
+      chart: nzbhydra2
+      helm:
+        releaseName: nzbhydra2
+        valueFiles:
+        - $values/applications/nzbhydra/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/nzbhydra/manifests
+      targetRevision: HEAD
+  destination:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media-services
+  syncPolicy:
+    automated:
+      prune: true
