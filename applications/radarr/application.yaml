@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: radarr
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://k8s-at-home.com/charts/
+      targetRevision: 16.3.2
+      chart: radarr
+      helm:
+        releaseName: radarr
+        valueFiles:
+        - $values/applications/radarr/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/radarr/manifests
+      targetRevision: HEAD
+  destination:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: media-services
+  syncPolicy:
+    automated:
+      prune: true
