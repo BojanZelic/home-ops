@@ -23,6 +23,6 @@ spec:
     name: addresspools.metallb.io
     jsonPointers:
     - /spec/conversion/webhook/clientConfig/caBundle
-  syncPolicy: {}
-    automated:
-      prune: true
+  syncPolicy:
+    # automated:
+    #   prune: true
