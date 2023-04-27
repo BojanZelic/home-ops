@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: aws-secret
+  namespace: crossplane-system
+spec:
+  encryptedData:
+    creds: AgCcXYYQzh2ZhuUuEOrI16EAl6tG0/wwc/pqN7JIuXRNhMezo1iLZUgU43pYGL6psdLbCT/uKx9Rhmc7x5a0Zi18zS5vD3ryptXfkFLekdNIOjmWNUtjbCDndogSpao8df1/8/Xl6v1KF5v99K307ttvyomELf+F3orDc7jWqGXO32PePH+GC9K8vLYEZ42UkpU46K7XSFJEmKyRqyy+av57CtPqq76PU+QwWZJM/pjoeG7h8AiZwIxJtiRZrZ81maKVdnGP7PiYyVYuZ/qPy6xSSoIWvzKJrnO0Ci39ioTlA23MzhK7Mi50TVc/jHHIk2jFTcMquF7vERsxV7ATGRgQEOrlvRcrq3U62OOaIVuQ1j+6iRvC7voUlo/ZxeHlDBKHdvdmANYv453+vghf8tbCPbFDFf16lTwsz9FL7AjrcsNAGbenigvaMRiNZ7MLRL93wGsrCY3VmpXntWPdBmAPUzo3BeYMdXm12uv5jEVUQWSDRo9e7dMHHnT9kXvSellm6RwlxaPbanNtW3fsCaF65b0o9EpwY/2x5d1raAGJlFcuJW+YP03A8v3Ij4GzoX/Q4EZdy3ZAll6rMBTnOi9q97M4HyiEMzG+lcL0g8oJOUxx9o5rd6zXqHFsXU+pCJpxqfajxqtO1dkrwG0r1r9ujzrahLvbAWZBOtsXKXjvwKlFFOhHI6UcTiMhMGh4vqFfKjqvfaG9wiJfGqT9lFbke+BsvjA0m8gMRNPGVVrlSY5IxlZdmoJol9wwBvXx6SmXlHkgxv6QHM9IrKq+3q2GxNOIXaRtTKZvJSEwwx4awNE7Rnq1vg1KMpFDRSayaPXd0cWZirrtmmDko4Sca0MWpNRz
+  template:
+    metadata:
+      creationTimestamp: null
+      name: aws-secret
+      namespace: crossplane-system
+    type: Opaque
+
