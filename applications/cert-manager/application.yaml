@@ -16,7 +16,7 @@ spec:
   destination:
   destination:
     server: https://kubernetes.default.svc
-    namespace: gitlab-managed-apps
+    namespace: cert-manager
   syncPolicy: {}
     #automated:
      # prune: true
