@@ -28,7 +28,7 @@ persistence:
     enabled: true
     storageClass: longhorn
     accessMode: ReadWriteOnce
-    size: 2Gi
+    size: 4Gi
   downloads:
     enabled: true
     mountPath: /downloads
