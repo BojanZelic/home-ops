@@ -22,4 +22,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: home-assistant
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
