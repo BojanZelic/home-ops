@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/external-dns/manifests
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dns-system
+  syncPolicy:
+    automated:
+      prune: true
