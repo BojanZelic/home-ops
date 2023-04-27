@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mosquitto
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/mosquitto/manifests
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mqtt
+  syncPolicy:
+    automated:
+      prune: true
