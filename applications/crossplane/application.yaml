@@ -21,7 +21,7 @@ spec:
       targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: crossplane
+    namespace: crossplane-system
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
