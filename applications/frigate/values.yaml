@@ -148,6 +148,16 @@ config: |
       type: edgetpu
       device: usb
   cameras:
+    sidedoor:
+      ffmpeg:
+        inputs:
+          - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C016A7PAU00072.iot.zelic.io/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif
+            roles:
+              - detect
+              - rtmp
+              - record
+      record:
+        enabled: True
     doorway:
       ffmpeg:
         inputs:
