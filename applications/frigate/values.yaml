@@ -61,12 +61,12 @@ persistence:
     accessMode: ReadWriteOnce
     storageClass: longhorn
     size: 1Gi
-  media:
-    enabled: false
-    mountPath: /media/frigate
-    storageClass: frigate-media
-    accessMode: ReadWriteMany
-    size: 90Gi
+  # media:
+  #   enabled: false
+  #   mountPath: /media/frigate
+  #   storageClass: frigate-media
+  #   accessMode: ReadWriteMany
+  #   size: 90Gi
 
   # -- Configure a hostPathMount to mount a USB device in the container.
   # @default -- See values.yaml
@@ -77,37 +77,42 @@ persistence:
 
   # -- Configure a temporary cache. See [docs](https://blakeblackshear.github.io/frigate/) for more details..
   # @default -- See values.yaml
-  # cache:
-  #   enabled: true
-  #   type: emptyDir
-  #   medium: Memory
-  #   sizeLimit: 128Mi
-  #   mountPath: /dev/shm
-  # tmpcache:
-  #   enabled: true
-  #   type: emptyDir
-  #   medium: Memory
-  #   sizeLimit: 512Mi
-  #   mountPath: /tmp/cache
+  cache:
+    enabled: true
+    type: emptyDir
+    medium: Memory
+    sizeLimit: 128Mi
+    mountPath: /dev/shm
+  tmpcache:
+    enabled: true
+    type: emptyDir
+    medium: Memory
+    sizeLimit: 512Mi
+    mountPath: /tmp/cache
 
 extraVolumes:
-  - name: video10
+  - name: media
     hostPath:
-      path: /dev/video10
-  - name: video11
-    hostPath:
-      path: /dev/video11
-  - name: video12
-    hostPath:
-      path: /dev/video12
+      path: /mnt/cameras
+  # - name: video10
+  #   hostPath:
+  #     path: /dev/video10
+  # - name: video11
+  #   hostPath:
+  #     path: /dev/video11
+  # - name: video12
+  #   hostPath:
+  #     path: /dev/video12
 
 extraVolumeMounts:
-  - name: video10
-    mountPath: /dev/video10
-  - name: video11
-    mountPath: /dev/video11
-  - name: video12
-    mountPath: /dev/video12
+  - name: media
+    mountPath: /media/frigate
+  # - name: video10
+  #   mountPath: /dev/video10
+  # - name: video11
+  #   mountPath: /dev/video11
+  # - name: video12
+  #   mountPath: /dev/video12
     
 # -- Affinity constraint rules to place the Pod on a specific node.
 # [[ref]](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
@@ -116,7 +121,7 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
       - matchExpressions:
-        - key: app
+        - key: usb-attachment
           operator: In
           values:
           - coral-tpu
@@ -181,5 +186,5 @@ config: |
     events:
       retain:
         default: 7
-  # ffmpeg:
-  #   hwaccel_args: -c:v h264_v4l2m2m
+  ffmpeg:
+    hwaccel_args: preset-vaapi
