@@ -160,22 +160,22 @@ config: |
               - record
       detect:
         enabled: True
-    # front_left:
-    #   ffmpeg:
-    #     inputs:
-    #       - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00924.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
-    #         roles:
-    #           - record
-    #   detect:
-    #     enabled: False
-    # front_right:
-    #   ffmpeg:
-    #     inputs:
-    #       - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
-    #         roles:
-    #           - record
-    #   detect:
-    #     enabled: False
+    front_left:
+      ffmpeg:
+        inputs:
+          - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00924.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+            roles:
+              - record
+      detect:
+        enabled: False
+    front_right:
+      ffmpeg:
+        inputs:
+          - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+            roles:
+              - record
+      detect:
+        enabled: False
   rtmp:
     enabled: True
   detect:
