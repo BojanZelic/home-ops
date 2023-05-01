@@ -61,12 +61,12 @@ persistence:
     accessMode: ReadWriteOnce
     storageClass: longhorn
     size: 1Gi
-  # media:
-  #   enabled: false
-  #   mountPath: /media/frigate
-  #   storageClass: frigate-media
-  #   accessMode: ReadWriteMany
-  #   size: 90Gi
+  media:
+    enabled: false
+    mountPath: /media/frigate
+    storageClass: frigate-media
+    accessMode: ReadWriteMany
+    size: 90Gi
 
   # -- Configure a hostPathMount to mount a USB device in the container.
   # @default -- See values.yaml
@@ -91,9 +91,9 @@ persistence:
     mountPath: /tmp/cache
 
 extraVolumes:
-  - name: media
-    hostPath:
-      path: /mnt/cameras
+  # - name: media
+  #   hostPath:
+  #     path: /mnt/cameras
   # - name: video10
   #   hostPath:
   #     path: /dev/video10
@@ -105,8 +105,8 @@ extraVolumes:
   #     path: /dev/video12
 
 extraVolumeMounts:
-  - name: media
-    mountPath: /media/frigate
+  # - name: media
+  #   mountPath: /media/frigate
   # - name: video10
   #   mountPath: /dev/video10
   # - name: video11
