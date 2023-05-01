@@ -168,13 +168,18 @@ config: |
               - record
       detect:
         enabled: False
+      rtmp:
+        enabled: False
     front_right:
       ffmpeg:
         inputs:
           - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
             roles:
+              - rtmp
               - record
       detect:
+        enabled: False
+      rtmp:
         enabled: False
   rtmp:
     enabled: True
