@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frigate
+  namespace: default
+  labels:
+    app.kubernetes.io/name: frigate
+    app.kubernetes.io/instance: frigate
+data:
+  config.yml: |
+    mqtt:
+        host: mosquitto.mqtt.svc.cluster.local
+    detectors:
+      coral:
+        type: edgetpu
+        device: usb
+    cameras:
+      sidedoor:
+        ffmpeg:
+          inputs:
+            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C016A7PAU00072.iot.zelic.io/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif
+              roles:
+                - detect
+                - rtmp
+                - record
+        record:
+          enabled: True
+      doorway:
+        ffmpeg:
+          inputs:
+            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
+              roles:
+                - detect
+                - rtmp
+            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+              roles:
+                - record
+        detect:
+          enabled: True
+      front_left:
+        ffmpeg:
+          inputs:
+            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00924.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+              roles:
+                - record
+        detect:
+          enabled: False
+        rtmp:
+          enabled: False
+      front_right:
+        ffmpeg:
+          inputs:
+            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+              roles:
+                - rtmp
+                - record
+        detect:
+          enabled: False
+        rtmp:
+          enabled: False
+    rtmp:
+      enabled: True
+    detect:
+      enabled: False
+    record:
+      enabled: True
+      retain_days: 7
+      events:
+        retain:
+          default: 7
+    ffmpeg:
+      hwaccel_args: preset-vaapi
