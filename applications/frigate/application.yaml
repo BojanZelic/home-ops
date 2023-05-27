@@ -6,16 +6,6 @@ metadata:
 spec:
   project: home-ops
   sources:
-    - repoURL: https://blakeblackshear.github.io/blakeshome-charts/
-      targetRevision: 7.0.0
-      chart: frigate
-      helm:
-        releaseName: frigate
-        valueFiles:
-        - $values/applications/frigate/values.yaml
-    - repoURL: https://github.com/BojanZelic/home-ops.git
-      targetRevision: HEAD
-      ref: values
     - repoURL: https://github.com/BojanZelic/home-ops.git
       path: applications/frigate/manifests
       targetRevision: HEAD
