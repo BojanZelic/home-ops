@@ -57,16 +57,10 @@ securityContext:
 persistence:
   data:
     enabled: true
+    type: hostPath
+    hostPath: /mnt/cameras
     mountPath: /data
     accessMode: ReadWriteOnce
-    storageClass: longhorn
-    size: 1Gi
-  media:
-    enabled: false
-    mountPath: /media/frigate
-    storageClass: frigate-media
-    accessMode: ReadWriteMany
-    size: 90Gi
 
   # -- Configure a hostPathMount to mount a USB device in the container.
   # @default -- See values.yaml
