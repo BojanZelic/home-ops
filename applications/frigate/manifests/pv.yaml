@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /mnt/data/frigate
+    path: /mnt/cameras
   nodeAffinity:
     required:
       nodeSelectorTerms:
