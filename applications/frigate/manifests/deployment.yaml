@@ -60,8 +60,8 @@ spec:
               name: coral-dev
             - mountPath: /config
               name: config
-            - mountPath: /data
-              name: data
+            - mountPath: /media/frigate
+              name: media
             - name: dshm
               mountPath: /dev/shm
           resources:
@@ -72,9 +72,9 @@ spec:
         - name: coral-dev
           hostPath:
             path: /dev/bus/usb
-        - name: data
-          hostPath:
-            path: /mnt/cameras
+        - name: media
+          persistentVolumeClaim:
+            claimName: frigate 
         - name: dshm
           emptyDir:
             medium: Memory
