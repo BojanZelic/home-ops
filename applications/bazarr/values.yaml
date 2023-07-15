@@ -3,6 +3,9 @@ podSecurityContext:
   runAsGroup: 1000
   fsGroup: 1000
 
+controller:
+  replicas: 0
+  
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
