@@ -13,6 +13,9 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
 
+controller:
+  replicas: 0
+  
 # -- environment variables. See [plex docs](https://support.plex.tv/articles/201105343-advanced-hidden-server-settings/) for more details.
 # **NOTE:** Plex preference options are camelCase and CASE SENSITIVE!
 # You can do horrible things to your Plex configuration if you are not careful
