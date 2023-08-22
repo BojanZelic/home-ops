@@ -16,6 +16,10 @@ spec:
       port: 1935
       protocol: TCP
       targetPort: rtmp
+    - name: rtmp
+      port: 1935
+      protocol: TCP
+      targetPort: rtmp
   selector:
     app.kubernetes.io/name: frigate
     app.kubernetes.io/instance: frigate

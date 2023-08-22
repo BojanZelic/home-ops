@@ -13,33 +13,47 @@ data:
       coral:
         type: edgetpu
         device: usb
+    go2rtc:
+      streams:
+        sidedoor:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C016A7PAU00072.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+        sidedoor_sub:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C016A7PAU00072.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
+        doorway:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+        doorway_sub:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
+        front_left:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00924.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+        front_right:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
     cameras:
       sidedoor:
         ffmpeg:
           inputs:
-            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C016A7PAU00072.iot.zelic.io/cam/realmonitor?channel=1&subtype=0&unicast=true&proto=Onvif
+            - path: rtsp://127.0.0.1:8554/sidedoor
+              roles:
+                - record
+            - path: rtsp://127.0.0.1:8554/sidedoor_sub
               roles:
                 - detect
-                - rtmp
-                - record
         record:
           enabled: True
       doorway:
         ffmpeg:
           inputs:
-            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
-              roles:
-                - detect
-                - rtmp
-            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+            - path: rtsp://127.0.0.1:8554/doorway
               roles:
                 - record
+            - path: rtsp://127.0.0.1:8554/doorway_sub
+              roles:
+                - detect
         detect:
           enabled: True
       front_left:
         ffmpeg:
           inputs:
-            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00924.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+            - path: rtsp://127.0.0.1:8554/front_left
               roles:
                 - record
         detect:
@@ -49,23 +63,20 @@ data:
       front_right:
         ffmpeg:
           inputs:
-            - path: rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+            - path: rtsp://127.0.0.1:8554/front_right
               roles:
-                - rtmp
                 - record
         detect:
           enabled: False
-        rtmp:
-          enabled: False
     rtmp:
-      enabled: True
+      enabled: False
     detect:
       enabled: False
     record:
       enabled: True
-      retain_days: 7
+      retain_days: 30
       events:
         retain:
-          default: 7
+          default: 30
     ffmpeg:
       hwaccel_args: preset-vaapi
