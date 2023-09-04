@@ -46,7 +46,7 @@ initContainers:
     volumeMounts:
     - name: data
       mountPath: /usr/src/paperless/data
-    - name: configmap
+    - name: litestream
       mountPath: /etc/litestream.yml
       subPath: litestream.yml
     env:
@@ -60,6 +60,18 @@ initContainers:
         secretKeyRef:
           name: lightstream-s3
           key: LITESTREAM_SECRET_ACCESS_KEY
+
+configmap:
+  litestream:
+    enabled: true
+    # -- Homer configuration. [[ref]](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md)
+    # @default -- See [values.yaml](./values.yaml)
+    data:
+      litestream.yml: |-
+        dbs:
+        - path: /var/lib/myapp/db
+          replicas:
+            - url: s3://zelic-io-paperless/db
 
 persistence:
   # -- Configure data volume settings for the chart under this key.
