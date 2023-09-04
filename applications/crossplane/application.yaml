@@ -7,7 +7,7 @@ spec:
   project: home-ops
   sources:
     - repoURL: https://charts.crossplane.io/stable
-      targetRevision: 1.12.1
+      targetRevision: 1.13.2
       chart: crossplane
       helm:
         releaseName: crossplane
