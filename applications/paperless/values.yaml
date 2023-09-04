@@ -61,7 +61,7 @@ initContainers:
           name: lightstream-s3
           key: LITESTREAM_SECRET_ACCESS_KEY
 
-configmap:
+configMaps:
   litestream:
     enabled: true
     # -- Homer configuration. [[ref]](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md)
