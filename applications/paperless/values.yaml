@@ -74,6 +74,9 @@ configMaps:
             - url: s3://zelic-io-paperless/db
 
 persistence:
+  litestream:
+    type: configMap
+    name: litestream
   # -- Configure data volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
   data:
