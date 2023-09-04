@@ -75,6 +75,7 @@ configMaps:
 
 persistence:
   litestream:
+    enabled: true
     type: configMap
     name: litestream
   # -- Configure data volume settings for the chart under this key.
