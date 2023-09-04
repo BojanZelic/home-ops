@@ -77,7 +77,7 @@ persistence:
   litestream:
     enabled: true
     type: configMap
-    name: litestream-config
+    name: paperless-ngx-litestream
   # -- Configure data volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
   data:
