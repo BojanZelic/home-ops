@@ -46,7 +46,7 @@ persistence:
     retain: true
     mountPath: /usr/src/paperless/data
     # storageClass: ""
-    # accessMode: ReadWriteOnce
+    accessMode: ReadWriteOnce
     # size: 1Gi
   # -- Configure media volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
@@ -55,7 +55,7 @@ persistence:
     retain: true
     mountPath: /usr/src/paperless/media
     # storageClass: ""
-    # accessMode: ReadWriteOnce
+    accessMode: ReadWriteOnce
     # size: 8Gi
   # -- Configure export volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
@@ -73,7 +73,7 @@ persistence:
     retain: true
     mountPath: /usr/src/paperless/consume
     # storageClass: ""
-    # accessMode: ReadWriteOnce
+    accessMode: ReadWriteOnce
     # size: 4Gi
 
 # -- Enable and configure redis subchart under this key.
