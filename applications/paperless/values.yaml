@@ -45,7 +45,7 @@ persistence:
     enabled: false
     retain: true
     mountPath: /usr/src/paperless/data
-    # storageClass: ""
+    storageClass: "longhorn"
     accessMode: ReadWriteOnce
     size: 1Gi
   # -- Configure media volume settings for the chart under this key.
@@ -54,7 +54,7 @@ persistence:
     enabled: false
     retain: true
     mountPath: /usr/src/paperless/media
-    # storageClass: ""
+    storageClass: "longhorn"
     accessMode: ReadWriteOnce
     size: 8Gi
   # -- Configure export volume settings for the chart under this key.
@@ -63,7 +63,7 @@ persistence:
     enabled: true
     retain: true
     mountPath: /usr/src/paperless/export
-    # storageClass: ""
+    storageClass: "longhorn"
     accessMode: ReadWriteOnce
     size: 1Gi
   # -- Configure consume volume settings for the chart under this key.
@@ -72,7 +72,7 @@ persistence:
     enabled: true
     retain: true
     mountPath: /usr/src/paperless/consume
-    # storageClass: ""
+    storageClass: "longhorn"
     accessMode: ReadWriteOnce
     size: 1Gi
 
