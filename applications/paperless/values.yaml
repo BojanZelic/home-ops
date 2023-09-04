@@ -1,0 +1,91 @@
+
+image:
+  # -- Image repository
+  repository: ghcr.io/paperless-ngx/paperless-ngx
+  # -- Image pull policy
+  pullPolicy: IfNotPresent
+  # -- Image tag
+  tag: 1.16.5
+
+# -- Environment variables [[ref]](https://docs.paperless-ngx.com/configuration/)
+# @default -- See [values.yaml](./values.yaml)
+env:
+  # -- Set the container timezone
+  TZ: UTC
+  # PAPERLESS_SECRET_KEY: ""
+
+service:
+  # -- Configures service settings for the chart.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    ports:
+      http:
+        port: 8000
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  main:
+    enabled: true
+    annotations:
+      external-dns.alpha.kubernetes.io/target: 03d39176-e294-4b8a-8895-23b83f7e1063.cfargotunnel.com
+    # hosts:
+    #   - host: chart-example.local
+    #     paths:
+    #       - path: /
+    # tls:
+    #   - secretName: chart-example.local
+    #     hosts:
+    #       - chart-example.local
+
+persistence:
+  # -- Configure data volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  data:
+    enabled: false
+    retain: true
+    mountPath: /usr/src/paperless/data
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+  # -- Configure media volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  media:
+    enabled: false
+    retain: true
+    mountPath: /usr/src/paperless/media
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 8Gi
+  # -- Configure export volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  export:
+    enabled: true
+    retain: true
+    mountPath: /usr/src/paperless/export
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+  # -- Configure consume volume settings for the chart under this key.
+  # @default -- See [values.yaml](./values.yaml)
+  consume:
+    enabled: true
+    retain: true
+    mountPath: /usr/src/paperless/consume
+    # storageClass: ""
+    # accessMode: ReadWriteOnce
+    # size: 4Gi
+
+# -- Enable and configure redis subchart under this key.
+#    If enabled, the app's Redis env will be set for you.
+#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/redis)
+# @default -- See [values.yaml](./values.yaml)
+redis:
+  enabled: true
+  auth:
+    enabled: true
+  master:
+    persistence:
+      enabled: false
+  replica:
+    replicaCount: 0
