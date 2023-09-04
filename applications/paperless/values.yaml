@@ -61,17 +61,17 @@ initContainers:
           name: lightstream-s3
           key: LITESTREAM_SECRET_ACCESS_KEY
 
-# configMaps:
-#   litestream:
-#     enabled: true
-#     # -- Homer configuration. [[ref]](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md)
-#     # @default -- See [values.yaml](./values.yaml)
-#     data:
-#       litestream.yml: |-
-#         dbs:
-#         - path: /var/lib/myapp/db
-#           replicas:
-#             - url: s3://zelic-io-paperless/db
+configMaps:
+  litestream:
+    enabled: true
+    # -- Homer configuration. [[ref]](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md)
+    # @default -- See [values.yaml](./values.yaml)
+    data:
+      litestream.yml: |-
+        dbs:
+        - path: /var/lib/myapp/db
+          replicas:
+            - url: s3://zelic-io-paperless/db
 
 persistence:
   litestream:
