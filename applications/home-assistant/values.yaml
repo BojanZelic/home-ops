@@ -4,7 +4,7 @@
 #   fsGroup: 1000
 image:
   repository: homeassistant/home-assistant
-  tag: 2023.8.4
+  tag: 2023.9.0
 
 env:
   # -- Set the container timezone
