@@ -73,9 +73,6 @@ configMaps:
         - path: /usr/src/paperless/data/db.sqlite3
           replicas:
             - url: s3://zelic-io-paperless/db.sqlite3
-        - path: /usr/src/paperless/data/celerybeat-schedule.db
-          replicas:
-            - url: s3://zelic-io-paperless/celerybeat-schedule.db
 sidecars:
   ligtestream: 
     name: litestream
