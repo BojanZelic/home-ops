@@ -109,20 +109,20 @@ persistence:
   # @default -- See [values.yaml](./values.yaml)
   data:
     enabled: true
-    retain: true
-    mountPath: /usr/src/paperless/data
-    storageClass: "longhorn"
-    accessMode: ReadWriteOnce
-    size: 1Gi
+    type: emptyDir
+    # mountPath: /usr/src/paperless/data
+    # storageClass: "longhorn"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
   # -- Configure media volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
   media:
-    enabled: false
+    enabled: true
     retain: true
     mountPath: /usr/src/paperless/media
     storageClass: "longhorn"
     accessMode: ReadWriteOnce
-    size: 8Gi
+    size: 12Gi
   # -- Configure export volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
   export:
