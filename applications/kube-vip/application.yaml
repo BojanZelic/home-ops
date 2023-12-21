@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-vip
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://kube-vip.github.io/helm-charts
+      targetRevision: 0.4.4
+      chart: kube-vip
+      helm:
+        releaseName: kube-vip
+        valueFiles:
+        - $values/applications/kube-vip/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-vip-system
+  syncPolicy: {}
+    # automated:
+    #   prune: true
