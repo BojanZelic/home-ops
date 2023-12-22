@@ -1,0 +1,9 @@
+apiVersion: samba-operator.samba.org/v1alpha1
+kind: SmbShare
+metadata:
+  name: paperless
+spec:
+  storage:
+    pvc:
+      name: "paperless-ngx-consume"
+  readOnly: false
