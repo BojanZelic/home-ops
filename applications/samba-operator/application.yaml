@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: samba-operator
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/samba-operator/manifests
+      targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: samba-system
+  syncPolicy:
+    automated:
+      prune: true
