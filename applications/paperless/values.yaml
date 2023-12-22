@@ -138,8 +138,8 @@ persistence:
     enabled: true
     retain: true
     mountPath: /usr/src/paperless/consume
-    storageClass: "longhorn"
-    accessMode: ReadWriteOnce
+    storageClass: "local-storage"
+    accessMode: ReadWriteMany
     size: 1Gi
 
 # -- Enable and configure redis subchart under this key.
