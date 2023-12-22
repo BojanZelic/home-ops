@@ -16,6 +16,9 @@ spec:
     - repoURL: https://github.com/BojanZelic/home-ops.git
       targetRevision: HEAD
       ref: values
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      path: applications/kube-vip-cloud-provider/manifests
+      targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
