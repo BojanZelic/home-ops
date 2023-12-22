@@ -126,7 +126,7 @@ persistence:
   # -- Configure export volume settings for the chart under this key.
   # @default -- See [values.yaml](./values.yaml)
   export:
-    enabled: true
+    enabled: false
     retain: true
     mountPath: /usr/src/paperless/export
     storageClass: "longhorn"
