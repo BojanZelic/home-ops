@@ -7,6 +7,7 @@ resources:
   - https://github.com/samba-in-kubernetes/samba-operator//config/default?ref=v0.4
 
 patches:
+  # https://github.com/samba-in-kubernetes/samba-operator/issues/324
 - path: patch_node_affinity.yaml
   target:
     kind: Deployment

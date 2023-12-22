@@ -1,4 +1,6 @@
 apiVersion: apps/v1
+metadata:
+  name: required-for-kustomize-but-not-used
 spec:
   template:
     spec:
