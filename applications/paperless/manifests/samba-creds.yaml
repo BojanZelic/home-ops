@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: samba-creds
+  namespace: default
+spec:
+  encryptedData:
+    users: AgASNj2sAYVSEGZujhUTZCstFNgeK4Pk+IWvWj6Yts9Tg8rQ0f342hhHZqS8h3hO+RM2wTHRWLnyI+obJHL3u3YKiKaaDe1KIakfOlNPJrUO84haOZ0xKhBrOh6QyVoBNdUnU9LkSyNTmCGj38qDoA8NBYMZnn6jlCoZwry57NjIPs1CjgqKTG9c4hcXzdSK+LmE3AbpndAHk5mx8rOnhpSi0shk93/2uYiCjI+hcn7yycJQ9swsDYTBxrEakPYwOGSSKc0+hCYlZrNP1+OnRhwnYOAOycoEOKNBOLXNeJdOKeVeHCHId3Y/609cW6ByF9xJQKqX2WAu4PoLr0J4qxBdBEeyCYz3kB/A4BWqa3m/e3AW4RBOCAtdfE+pU+3GhhmdYrh8001DPuu25Y1j5XkcOTOxz/a49CuYbRRzyYwEIRp24XhB1iE9T1kZ+0uDWMffXNDQr3vEk9bmLZBweG+Z2p/o6Q4uTLGTKPHroMDe/nAuZ4w/LBecljRpVpaG7z8xlcSZEkhl0si+hdjwTzsph2obVSPB7NpMrjHSOinsWHpXL7w420vE/3jP6PSFS90k9eL7ocXuFmcnUwB+unCPrvt0XpaIb1Q9WItb4YAJsnrVexpR5mBZNue0P78fUSgCNDQm7kHksyKrzLcTyAPyY6UuT+/7rgOtK9jHffw949pTAdGoucCtQV4XPoUxJOC61cSsUE5aM7whRvdqcUsP8A84NOTzKKawpV7agoIQkMLebv/26EGC1a0UR/vVW/bIrLHy4dk/yYmMkkjGAo5Em2hgmO/SD7m5RPh31+gwMDgak4hdGya9V63mHOuN2feMvlgvdlJYbedkNReI5tcdH3oEzNO5Wak/pbl5aUqwnGnXyxt24/FuhcjbMukH5qjkc6P4f9ymjM7QfCacWZbgty3QTz/pGpJG9layiQbyyvWrPQIvSwHGomUr7SemknNCPA35UEBbSfly3f2jjwbzrcnadfl9HJjZnOnf15PojM2Gobw=
+  template:
+    metadata:
+      name: samba-creds
+      namespace: default
+    type: Opaque
+

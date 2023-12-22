@@ -3,7 +3,8 @@ kind: SmbShare
 metadata:
   name: paperless-smb
 spec:
-  commonConfig: samba-config
+  commonConfig: samba-creds
+  securityConfig: domain-security1
   storage:
     pvc:
       name: "paperless-ngx-consume"
