@@ -19,6 +19,8 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-vip-system
-  syncPolicy: {}
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     # automated:
     #   prune: true
