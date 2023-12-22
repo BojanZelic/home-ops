@@ -22,6 +22,13 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: paperless
+  ignoreDifferences:
+  - group: ""
+    jsonPointers:
+    - /data/redis-password
+    kind: Secret
   syncPolicy:
+    syncOptions:
+    - RespectIgnoreDifferences=true
     automated:
       prune: true
