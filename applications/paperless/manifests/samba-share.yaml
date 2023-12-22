@@ -1,7 +1,7 @@
 apiVersion: samba-operator.samba.org/v1alpha1
 kind: SmbShare
 metadata:
-  name: paperless
+  name: paperless-smb
 spec:
   commonConfig: samba-config
   storage:
