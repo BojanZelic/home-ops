@@ -127,7 +127,7 @@ persistence:
   # @default -- See [values.yaml](./values.yaml)
   export:
     enabled: false
-    retain: true
+    retain: false
     mountPath: /usr/src/paperless/export
     storageClass: "longhorn"
     accessMode: ReadWriteOnce
