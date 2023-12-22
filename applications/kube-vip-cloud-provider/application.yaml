@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-vip
+  name: kube-vip-cloud-provider
   namespace: argo-system
 spec:
   project: home-ops
