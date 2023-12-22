@@ -1,6 +1,7 @@
 apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: required-for-kustomize-but-not-used
+  name: node_affinity_deployment
 spec:
   template:
     spec:
