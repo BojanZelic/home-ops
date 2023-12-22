@@ -3,6 +3,7 @@ kind: SmbShare
 metadata:
   name: paperless
 spec:
+  commonConfig: samba-config
   storage:
     pvc:
       name: "paperless-ngx-consume"
