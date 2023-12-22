@@ -138,7 +138,7 @@ persistence:
     enabled: true
     retain: true
     mountPath: /usr/src/paperless/consume
-    storageClass: "local-storage"
+    storageClass: "local-path"
     accessMode: ReadWriteMany
     size: 1Gi
 
