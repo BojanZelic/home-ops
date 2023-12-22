@@ -7,7 +7,7 @@ spec:
   project: default
   sources:
     - repoURL: https://kube-vip.github.io/helm-charts
-      targetRevision: 0.2.2.
+      targetRevision: 0.2.2
       chart: kube-vip-cloud-provider
       helm:
         releaseName: kube-vip-cloud-provider
