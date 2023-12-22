@@ -2,7 +2,6 @@ apiVersion: samba-operator.samba.org/v1alpha1
 kind: SmbSecurityConfig
 metadata:
   name: samba-creds
-  namespace: smb-shares
 spec:
   mode: users
   users:
