@@ -3,7 +3,7 @@ kind: SmbSecurityConfig
 metadata:
   name: samba-creds
 spec:
-  mode: users
+  mode: user
   users:
     secret: samba-creds
     key: users
