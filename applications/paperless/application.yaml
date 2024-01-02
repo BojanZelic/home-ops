@@ -7,7 +7,7 @@ spec:
   project: home-ops
   sources:
     - repoURL: https://charts.gabe565.com
-      targetRevision: 0.6.5
+      targetRevision: 0.10.0
       chart: paperless-ngx
       helm:
         releaseName: paperless-ngx
