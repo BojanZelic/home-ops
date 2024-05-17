@@ -1,0 +1,13 @@
+apiVersion: v2
+name: aws-vpc-cni
+version: 3.0.0
+appVersion: 2.0.0
+kubeVersion: ">=1.17.0-0"
+description: "A Wrapper Helm chart for AWS VPC CNI"
+home: https://github.com/doordash/cluster-config/charts/aws-vpc-cni
+sources:
+  - https://github.com/aws/eks-charts/blob/master/stable/aws-vpc-cni/README.md
+dependencies:
+  - name: aws-vpc-cni
+    repository: https://aws.github.io/eks-charts
+    version: 1.18.1

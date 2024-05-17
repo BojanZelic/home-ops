@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: aws-vpc-cni
+  namespace: argo-system
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  generators:
+    - merge:
+        mergeKeys:
+          - server
+        generators:
+          - clusters:
+          - git:
+              repoURL: https://github.com/BojanZelic/home-ops.git
+              revision: aws-vpc-set-variables
+              files:
+                - path: argocd/workloads/aws-vpc-cni/configs/*
+  template:
+    metadata:
+      name: "aws-vpc-cni-{{ .name }}"
+      labels:
+        application: aws-vpc-cni
+    spec:
+      source:
+        repoURL: https://github.com/BojanZelic/home-ops.git
+        targetRevision: appset-tests
+        path: charts/aws-vpc-cni
+        helm:
+          releaseName: aws-vpc-cni
+          values: |-
+            {{values.helm}}
+      destination:
+        server: "{{ .server }}"
+        namespace: kube-system
+      syncPolicy: {}

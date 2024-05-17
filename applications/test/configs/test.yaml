@@ -1,0 +1,3 @@
+server: https://k8s-pi-01.zelic.io:6443
+
+helm: test
