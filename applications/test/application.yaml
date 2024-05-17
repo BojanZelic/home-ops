@@ -19,7 +19,7 @@ spec:
               repoURL: https://github.com/BojanZelic/home-ops.git
               revision: aws-vpc-set-variables
               files:
-                - path: argocd/workloads/aws-vpc-cni/configs/*
+                - path: applications/test/configs/*
   template:
     metadata:
       name: "aws-vpc-cni-{{ .name }}"
