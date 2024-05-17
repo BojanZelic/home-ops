@@ -14,10 +14,10 @@ spec:
         mergeKeys:
           - server
         generators:
-          - clusters:
+          - clusters: {}
           - git:
               repoURL: https://github.com/BojanZelic/home-ops.git
-              revision: aws-vpc-set-variables
+              revision: test
               files:
                 - path: applications/test/configs/*
   template:
@@ -26,9 +26,10 @@ spec:
       labels:
         application: aws-vpc-cni
     spec:
+      project: home-ops
       source:
         repoURL: https://github.com/BojanZelic/home-ops.git
-        targetRevision: appset-tests
+        targetRevision: test
         path: charts/aws-vpc-cni
         helm:
           releaseName: aws-vpc-cni
