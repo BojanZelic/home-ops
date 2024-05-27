@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: external-mdns
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+ name: external-mdns
+rules:
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["list", "watch"]
+- apiGroups: ["extensions","networking.k8s.io"]
+  resources: ["ingresses"]
+  verbs: ["list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+ name: external-mdns-viewer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: external-mdns
+subjects:
+- kind: ServiceAccount
+  name: external-mdns
+  namespace: default
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-mdns
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-mdns
+  template:
+    metadata:
+      labels:
+        app: external-mdns
+    spec:
+      securityContext:
+        runAsUser: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+      hostNetwork: true
+      serviceAccountName: external-mdns
+      containers:
+      - name: external-mdns
+        requests:
+          memory: "64Mi"
+          cpu: "50m"
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+        image: blakec/external-mdns:latest
+        args:
+        #- -source=ingress
+        - -source=service
