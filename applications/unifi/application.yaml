@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: unifi
+  namespace: argo-system
+spec:
+  project: home-ops
+  sources:
+    - repoURL: https://qonstrukt.github.io/helm-charts/
+      targetRevision: 2.6.1
+      chart: unifi-controller
+      helm:
+        releaseName: unifi-controller
+        valueFiles:
+        - $values/applications/unifi/values.yaml
+    - repoURL: https://github.com/BojanZelic/home-ops.git
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: unifi
+  syncPolicy:
+    automated: {}
