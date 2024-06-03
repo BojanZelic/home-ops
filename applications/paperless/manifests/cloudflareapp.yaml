@@ -4,7 +4,7 @@ metadata:
   name: paperless
 spec:
   name: Radarr
-  domain: paperless.zelic.io
+  domain: paperless-ngx.zelic.io
   autoRedirectToIdentity: true
   policies: 
     - name: Allow Home
