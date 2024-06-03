@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi-controller
+  namespace: unifi
+spec:
+  ports:
+  - name: devicecom
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: webapi
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  - name: httpredirects
+    port: 8880
+    protocol: TCP
+    targetPort: 8880
+  - name: httpsredirects
+    port: 8843
+    protocol: TCP
+    targetPort: 8843
+  - name: speedtest
+    port: 6789
+    protocol: TCP
+    targetPort: 6789
+  - name: apdiscovery
+    port: 10001
+    protocol: UDP
+    targetPort: 10001
+  - name: stun
+    port: 3478
+    protocol: UDP
+    targetPort: 3478
+  selector:
+    app.kubernetes.io/instance: unifi-controller
+    app.kubernetes.io/name: unifi-controller
+  sessionAffinity: None
+  type: LoadBalancer
