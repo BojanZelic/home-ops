@@ -17,7 +17,7 @@ spec:
       targetRevision: HEAD
       ref: values
     - repoURL: https://github.com/BojanZelic/home-ops.git
-      path: applications/paperless/manifests
+      path: applications/unifi/manifests
       targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
