@@ -15,59 +15,52 @@ data:
         device: usb
     go2rtc:
       streams:
-        sidedoor:
+        front:
           - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C016A7PAU00072.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
-        sidedoor_sub:
+        front_sub:
           - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C016A7PAU00072.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
-        doorway:
-          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
-        doorway_sub:
-          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00638.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
-        front_left:
+        pool:
           - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00924.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
-        front_right:
+        pool_sub:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00924.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
+        side:
           - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=0
+        side_sub:
+          - rtsp://{FRIGATE_RTSP_USERNAME}:{FRIGATE_RTSP_PASSWORD}@1C00812PAU00919.iot.zelic.io/cam/realmonitor?channel=1&subtype=1
     cameras:
-      sidedoor:
+      front:
         ffmpeg:
           inputs:
-            - path: rtsp://127.0.0.1:8554/sidedoor
+            - path: rtsp://127.0.0.1:8554/front
               roles:
                 - record
-            - path: rtsp://127.0.0.1:8554/sidedoor_sub
+            - path: rtsp://127.0.0.1:8554/front_sub
               roles:
                 - detect
         record:
           enabled: True
-      doorway:
+      pool:
         ffmpeg:
           inputs:
-            - path: rtsp://127.0.0.1:8554/doorway
+            - path: rtsp://127.0.0.1:8554/pool
               roles:
                 - record
-            - path: rtsp://127.0.0.1:8554/doorway_sub
+            - path: rtsp://127.0.0.1:8554/pool_sub
               roles:
                 - detect
         detect:
           enabled: True
-      front_left:
+      side:
         ffmpeg:
           inputs:
-            - path: rtsp://127.0.0.1:8554/front_left
+            - path: rtsp://127.0.0.1:8554/side
               roles:
                 - record
-        detect:
-          enabled: False
-        rtmp:
-          enabled: False
-      front_right:
-        ffmpeg:
-          inputs:
-            - path: rtsp://127.0.0.1:8554/front_right
+            - path: rtsp://127.0.0.1:8554/side_sub
               roles:
-                - record
+                - detect
         detect:
-          enabled: False
+          enabled: True
     rtmp:
       enabled: False
     detect:
