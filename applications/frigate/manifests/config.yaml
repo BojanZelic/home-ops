@@ -37,7 +37,7 @@ data:
             - path: rtsp://127.0.0.1:8554/front_sub
               roles:
                 - detect
-        record:
+        detect:
           enabled: True
       pool:
         ffmpeg:
