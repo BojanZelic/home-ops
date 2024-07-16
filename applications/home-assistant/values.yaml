@@ -16,8 +16,8 @@ persistence:
 
 hostNetwork: true
 
-nodeSelector:
-  zwave-usb: "true"
+nodeSelector: {}
+  # zwave-usb: "true"
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
@@ -48,13 +48,13 @@ configuration:
     - 192.168.0.0/16
     - 127.0.0.0/8
 
-additionalVolumes:
-  - hostPath:
-      path: >-
-        /dev/serial/by-id/usb-Zooz_800_Z-Wave_Stick_533D004242-if00
-      type: CharDevice
-    name: usb
+# additionalVolumes:
+#   - hostPath:
+#       path: >-
+#         /dev/serial/by-id/usb-Zooz_800_Z-Wave_Stick_533D004242-if00
+#       type: CharDevice
+#     name: usb
 
-additionalMounts:
-  - mountPath: /dev/ttyACM0
-    name: usb
+# additionalMounts:
+#   - mountPath: /dev/ttyACM0
+#     name: usb
