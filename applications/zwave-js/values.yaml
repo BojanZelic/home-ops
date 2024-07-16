@@ -94,6 +94,7 @@ persistence:
   enabled: true
   storageClass: longhorn
   size: 1Gi
+  accessMode: ReadWriteOnce
   # existingClaim: my-claim
   # -- change the path of store. Just in case you use different env variable.
   mountPath: /usr/src/app/store
