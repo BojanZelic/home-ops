@@ -79,7 +79,7 @@ envFrom: []
 podAnnotations: {}
 
 podSecurityContext:
-  privilaged: true
+  privileged: true
 
   # fsGroup: 2000
 
