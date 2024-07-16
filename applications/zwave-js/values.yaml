@@ -78,11 +78,12 @@ envFrom: []
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  privilaged: true
+
   # fsGroup: 2000
 
-securityContext:
-  privilaged: true
+securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL
