@@ -42,7 +42,7 @@ ports:
   ui:
     name: http-ui
     containerPort: 8091
-    servicePort: 80
+    servicePort: 8091
     protocol: TCP
   websocket:
     name: http-websocket
