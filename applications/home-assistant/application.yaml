@@ -6,8 +6,8 @@ metadata:
 spec:
   project: home-ops
   sources:
-    - repoURL: https://k8s-at-home.com/charts/
-      targetRevision: 13.4.2
+    - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
+      targetRevision: 0.2.69
       chart: home-assistant
       helm:
         releaseName: home-assistant
