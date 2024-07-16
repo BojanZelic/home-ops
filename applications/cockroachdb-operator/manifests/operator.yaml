@@ -370,7 +370,7 @@ metadata:
   name: cockroach-operator-manager
   namespace: cockroach-operator-system
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: cockroach-operator
