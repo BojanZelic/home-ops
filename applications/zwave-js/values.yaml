@@ -102,7 +102,7 @@ persistence:
   # subPath: /path/to/config
 
 # -- Support custom usb device
-usbDevice: /dev/ttyUSB0
+usbDevice: /dev/serial/by-id/usb-Zooz_800_Z-Wave_Stick_533D004242-if00
 
 ingress:
   enabled: true
