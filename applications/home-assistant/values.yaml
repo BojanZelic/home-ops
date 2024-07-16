@@ -9,11 +9,10 @@
 # -- Configure persistence settings for the chart under this key.
 # @default -- See values.yaml
 persistence:
-  config:
-    enabled: true
-    accessMode: ReadWriteOnce
-    storageClass: longhorn
-    size: 1Gi
+  enabled: true
+  accessMode: ReadWriteOnce
+  storageClass: longhorn
+  size: 3Gi
 
 hostNetwork: true
 
@@ -48,4 +47,3 @@ configuration:
     - 10.0.0.0/8
     - 192.168.0.0/16
     - 127.0.0.0/8
-    
