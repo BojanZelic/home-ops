@@ -40,7 +40,7 @@ configuration:
   enabled: true
   # Force init will merge the current configuration file with the default configuration on every start
   # This is useful when you want to ensure that the configuration file is always up to date
-  forceInit: true
+  forceInit: false
   # List of trusted proxies in the format of CIDR notation in a case of using a reverse proxy
   # Here is the list of the most common private IP ranges, use your list of possible trusted proxies, usually, it's the IP of the reverse proxy
   trusted_proxies:
