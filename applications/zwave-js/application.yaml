@@ -7,7 +7,7 @@ spec:
   project: home-ops
   sources:
     - repoURL: https://charts.ar80.eu
-      targetRevision: 0.2.91
+      targetRevision: 0.2.116
       chart: zwave-js-ui
       helm:
         releaseName: zwave-js-ui
