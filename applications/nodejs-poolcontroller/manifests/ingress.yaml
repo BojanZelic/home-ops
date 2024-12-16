@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/target: 03d39176-e294-4b8a-8895-23b83f7e1063.cfargotunnel.com
+  name: nodejs-poolcontroller
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: nodejs-poolcontroller.zelic.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: nodejs-poolcontroller
+            port:
+              number: 4200
+        path: /
+        pathType: Prefix
