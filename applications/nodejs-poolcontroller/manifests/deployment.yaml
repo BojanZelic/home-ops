@@ -12,7 +12,6 @@ spec:
       labels:
         app: nodejs-poolcontroller
     spec:
-      replicas: 1
       containers:
         - image: tagyoureit/njspc:latest
           name: nodejs-poolcontroller
