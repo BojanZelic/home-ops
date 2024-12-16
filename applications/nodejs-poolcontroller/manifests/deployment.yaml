@@ -14,7 +14,7 @@ spec:
     spec:
       replicas: 1
       containers:
-        - image: msmi/nodejs-poolcontroller:latest
+        - image: tagyoureit/njspc:latest
           name: nodejs-poolcontroller
           ports:
             - containerPort: 4200
