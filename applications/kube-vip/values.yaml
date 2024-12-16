@@ -9,7 +9,7 @@ image:
   tag: "v0.6.4"
 
 config:
-  address: "10.10.100.241"
+  address: "192.168.0.241"
 
 env:
   vip_interface: "eth0" # eth0
