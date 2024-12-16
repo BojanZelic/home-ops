@@ -8,7 +8,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 200Mb
+      storage: 100Mi
   storageClassName: longhorn
   volumeMode: Filesystem
 status:
