@@ -20,10 +20,8 @@ spec:
           volumeMounts:
           - name: config
             mountPath: /app/config.json
+            subPath: config.json
       volumes:
       - name: config
         configMap:
           name: poolcontroller-config
-          items:
-          - key: config.json
-            path: config.json
