@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-poolcontroller-dashpanel
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-poolcontroller-dashpanel
+  template:
+    metadata:
+      labels:
+        app: nodejs-poolcontroller-dashpanel
+    spec:
+      replicas: 1
+      containers:
+        - image: msmi/nodejs-poolcontroller-dashpanel:latest
+          name: nodejs-poolcontroller-dashpanel
+          ports:
+            - containerPort: 5150
+          # volumeMounts:
+          # - name: config
+          #   mountPath: /app/config.json
+      volumes:
+      - name: config
+        configMap:
+          name: poolcontroller-config
+          items:
+          - key: config.json
+            path: config.json
