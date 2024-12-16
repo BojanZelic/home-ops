@@ -14,7 +14,7 @@ spec:
     spec:
       replicas: 1
       containers:
-        - image: tagyoureit/njspc-dashpanel:latest
+        - image: ghcr.io/bojanzelic/nodejs-poolcontroller-dashpanel:sha-804ddc1055b6405271c3516bcb0d6842c3519d88
           name: nodejs-poolcontroller-dashpanel
           ports:
             - containerPort: 5150
