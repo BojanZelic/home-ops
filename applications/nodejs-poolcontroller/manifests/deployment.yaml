@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-poolcontroller
+spec:
+  selector:
+    matchLabels:
+      app: nodejs-poolcontroller
+  template:
+    metadata:
+      labels:
+        app: nodejs-poolcontroller
+    spec:
+      replicas: 1
+      containers:
+        - image: msmi/nodejs-poolcontroller:latest
+          name: nodejs-poolcontroller
+          ports:
+            - containerPort: 4200
+          volumeMounts:
+          - name: config
+            mountPath: /app/config.json
+      volumes:
+      - name: config
+        configMap:
+          name: poolcontroller-config
+          items:
+          - key: config.json
+            path: config.json
