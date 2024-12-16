@@ -20,8 +20,10 @@ spec:
           volumeMounts:
           - name: config
             mountPath: /app/config.json
-            subPath: config.json
       volumes:
       - name: config
-        persistentVolumeClaim:
-          claimName: poolcontroller-config-pvc
+        configMap:
+          name: poolcontroller-config
+          items:
+          - key: config.json
+            path: config.json

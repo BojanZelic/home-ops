@@ -5,5 +5,366 @@ metadata:
 data:
   config.json: |
     {
-      # Your pool controller configuration goes here
+      "controller": {
+        "comms": {
+          "type": "netConnect",
+          "portId": 0,
+          "enabled": true,
+          "rs485Port": "/dev/ttyUSB0",
+          "mock": false,
+          "netConnect": true,
+          "netHost": "192.168.30.179",
+          "netPort": 8899,
+          "inactivityRetry": 10,
+          "portSettings": {
+            "baudRate": 9600,
+            "dataBits": 8,
+            "parity": "none",
+            "stopBits": 1,
+            "rtscts": false,
+            "autoOpen": false,
+            "lock": false,
+            "flowControl": false
+          },
+          "netSettings": {
+            "allowHalfOpen": false,
+            "keepAlive": false,
+            "keepAliveInitialDelay": 5
+          },
+          "screenlogic": {
+            "connectionType": "local",
+            "systemName": "Pentair: 00-00-00",
+            "password": 1234
+          }
+        },
+        "backups": {
+          "automatic": false,
+          "interval": {
+            "days": 30,
+            "hours": 0
+          },
+          "keepCount": 5,
+          "njsPC": true,
+          "servers": []
+        }
+      },
+      "web": {
+        "servers": {
+          "http2": {
+            "enabled": false,
+            "uuid": "14a40647-ae9a-4f0c-bee9-b3ea1230b372"
+          },
+          "http": {
+            "enabled": true,
+            "ip": "0.0.0.0",
+            "port": 4200,
+            "httpsRedirect": false,
+            "authentication": "none",
+            "authFile": "/users.htpasswd",
+            "uuid": "bc6ea09f-f3e9-4ebc-ac01-bdaf53e3ed2c"
+          },
+          "https": {
+            "enabled": false,
+            "ip": "0.0.0.0",
+            "port": 4201,
+            "authentication": "none",
+            "authFile": "/users.htpasswd",
+            "sslKeyFile": "",
+            "sslCertFile": "",
+            "uuid": "3ea67af2-d923-4824-acc8-d43f45df2bdb"
+          },
+          "mdns": {
+            "enabled": false,
+            "uuid": "93fc77de-4069-482e-8c44-aefbca341350"
+          },
+          "ssdp": {
+            "enabled": true,
+            "uuid": "e8f4bf34-5ce6-49bc-9375-ec68dcd7b334"
+          }
+        },
+        "services": {},
+        "interfaces": {
+          "smartThings": {
+            "name": "SmartThings",
+            "type": "rest",
+            "enabled": false,
+            "fileName": "smartThings-Hubitat.json",
+            "globals": {},
+            "options": {
+              "host": "0.0.0.0",
+              "port": 39500
+            },
+            "uuid": "1e6bc30a-921e-4663-9e34-f692d05fb903"
+          },
+          "hubitat": {
+            "name": "Hubitat",
+            "type": "rest",
+            "enabled": false,
+            "fileName": "smartThings-Hubitat.json",
+            "globals": {},
+            "options": {
+              "host": "0.0.0.0",
+              "port": 39501
+            },
+            "uuid": "9f7f1d63-6faa-48fa-85fd-783396acce4b"
+          },
+          "vera": {
+            "name": "Vera",
+            "type": "rest",
+            "enabled": false,
+            "fileName": "vera.json",
+            "vars": {
+              "deviceId": 0
+            },
+            "options": {
+              "host": "",
+              "port": 3480
+            },
+            "uuid": "32cbd7a6-cb01-45d4-8775-ff3a90c161b4"
+          },
+          "valveRelay": {
+            "type": "rest",
+            "name": "Valve Relays",
+            "enabled": false,
+            "fileName": "valveRelays.json",
+            "vars": {
+              "valveIds": []
+            },
+            "options": {
+              "host": "0.0.0.0",
+              "port": 8081
+            },
+            "uuid": "a9be4342-9d18-4fd3-8839-e5c2e0a89298"
+          },
+          "influxDB": {
+            "name": "InfluxDB",
+            "type": "influx",
+            "enabled": false,
+            "fileName": "influxDB.json",
+            "options": {
+              "version": 1,
+              "protocol": "http",
+              "host": "192.168.0.1",
+              "port": 9999,
+              "username": "",
+              "password": "",
+              "database": "pool",
+              "retentionPolicy": "autogen"
+            },
+            "uuid": "d12551f8-6552-4689-8c0c-6364a849b8b4"
+          },
+          "influxDBv2": {
+            "name": "InfluxDBv2",
+            "type": "influx",
+            "enabled": false,
+            "fileName": "influxDB.json",
+            "options": {
+              "version": 2,
+              "protocol": "http",
+              "host": "192.168.0.1",
+              "port": 9999,
+              "token": "...LuyM84JJx93Qvc7tfaXPbI_mFFjRBjaA==",
+              "org": "example-org",
+              "bucket": "57ec4eed2d90a50b"
+            },
+            "uuid": "73d24fed-7ee3-49ca-b45a-c82713b27000"
+          },
+          "mqtt": {
+            "name": "MQTT",
+            "type": "mqtt",
+            "enabled": false,
+            "fileName": "mqtt.json",
+            "globals": {},
+            "options": {
+              "protocol": "mqtt://",
+              "host": "192.168.0.1",
+              "port": 1883,
+              "username": "",
+              "password": "",
+              "selfSignedCertificate": false,
+              "rootTopic": "@bind=(state.equipment.model).replace(/ /g,'-').replace('/','').toLowerCase();",
+              "retain": true,
+              "qos": 0,
+              "changesOnly": true
+            },
+            "uuid": "1ba87396-f764-4f24-a74f-d1379f4785de"
+          },
+          "aqualinkD": {
+            "name": "AquaLinkD",
+            "type": "mqtt",
+            "enabled": false,
+            "fileName": "aqualinkD.json",
+            "globals": {},
+            "options": {
+              "protocol": "mqtt://",
+              "host": "192.168.0.1",
+              "port": 1883,
+              "username": "",
+              "password": "",
+              "rootTopic": "aqualinkd",
+              "retain": true,
+              "qos": 0,
+              "changesOnly": true
+            },
+            "vars": {
+              "tempPrecision": 2,
+              "tempUnits": "@bind=sys.board.valueMaps.tempUnits.getName(state.temps.units);"
+            },
+            "uuid": "50fd32df-ce8c-4fec-8e41-b844efb73b34"
+          },
+          "mqttAlt": {
+            "name": "MQTTAlt",
+            "type": "mqtt",
+            "enabled": false,
+            "fileName": "mqttAlt.json",
+            "globals": {},
+            "options": {
+              "protocol": "mqtt://",
+              "host": "192.168.0.1",
+              "port": 1883,
+              "username": "",
+              "password": "",
+              "rootTopic": "@bind=(state.equipment.model).replace(/ /,'-').replace('/','').toLowerCase();Alt",
+              "retain": true,
+              "qos": 0,
+              "changesOnly": true
+            },
+            "uuid": "8785d5d3-c619-4014-9ea8-f32e14ee0347"
+          },
+          "homeAssistant": {
+            "name": "Home Assistant",
+            "type": "mqtt",
+            "enabled": false,
+            "fileName": "homeassistant.json",
+            "globals": {},
+            "options": {
+              "protocol": "mqtt://",
+              "host": "192.168.0.1",
+              "port": 1883,
+              "username": "",
+              "password": "",
+              "selfSignedCertificate": false,
+              "retain": true,
+              "qos": 0,
+              "changesOnly": true
+            },
+            "vars": {
+              "_note": "hassTopic is the topic that HASS reads for configuration and should not be changed.  mqttTopic should match the topic in the MQTT binding (do not use MQTTAlt for HASS).",
+              "hassTopic": "homeassistant",
+              "mqttTopic": "@bind=(state.equipment.model).replace(/ /g,'-').replace('/','').toLowerCase();"
+            },
+            "uuid": "f99c59e7-4874-446b-92f4-52ce95179972"
+          },
+          "rem": {
+            "name": "Relay Equipment Manager",
+            "type": "rem",
+            "enabled": false,
+            "options": {
+              "protocol": "http://",
+              "host": "raspberrypi",
+              "port": 8080,
+              "headers": {
+                "content-type": "application/json"
+              }
+            },
+            "socket": {
+              "transports": [
+                "websocket"
+              ],
+              "upgrade": false,
+              "reconnectionDelay": 2000,
+              "reconnection": true,
+              "reconnectionDelayMax": 20000
+            },
+            "uuid": "701efcaa-6265-4ad2-b941-06b0c511243a"
+          }
+        }
+      },
+      "log": {
+        "screenlogic": {
+          "enabled": false,
+          "logToConsole": false,
+          "logToFile": false
+        },
+        "packet": {
+          "logToConsole": false,
+          "logToFile": false,
+          "enabled": false,
+          "filename": "packetLog",
+          "invalid": true,
+          "broadcast": {
+            "enabled": true,
+            "includeActions": [],
+            "includeSource": [],
+            "includeDest": [],
+            "excludeActions": [],
+            "excludeSource": [],
+            "excludeDest": []
+          },
+          "pump": {
+            "enabled": true,
+            "includeActions": [],
+            "includeSource": [],
+            "includeDest": [],
+            "excludeActions": [],
+            "excludeSource": [],
+            "excludeDest": []
+          },
+          "chlorinator": {
+            "enabled": true,
+            "includeSource": [],
+            "includeDest": [],
+            "excludeSource": [],
+            "excludeDest": []
+          },
+          "intellichem": {
+            "enabled": true,
+            "includeActions": [],
+            "excludeActions": [],
+            "includeSource": [],
+            "includeDest": [],
+            "excludeSource": [],
+            "excludeDest": []
+          },
+          "intellivalve": {
+            "enabled": true,
+            "includeActions": [],
+            "excludeActions": [],
+            "includeSource": [],
+            "includeDest": [],
+            "excludeSource": [],
+            "excludeDest": []
+          },
+          "heater": {
+            "enabled": true,
+            "includeActions": [],
+            "excludeActions": [],
+            "includeSource": [],
+            "includeDest": [],
+            "excludeSource": [],
+            "excludeDest": []
+          },
+          "unidentified": {
+            "enabled": true,
+            "includeSource": [],
+            "includeDest": [],
+            "excludeSource": [],
+            "excludeDest": []
+          },
+          "unknown": {
+            "enabled": true,
+            "includeSource": [],
+            "includeDest": [],
+            "excludeSource": [],
+            "excludeDest": []
+          }
+        },
+        "app": {
+          "enabled": true,
+          "level": "info",
+          "captureForReplay": false,
+          "logToFile": false
+        }
+      },
+      "appVersion": "8.0.5"
     }
