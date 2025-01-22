@@ -7,7 +7,7 @@ spec:
   project: home-ops
   sources:
     - repoURL: https://charts.longhorn.io/
-      targetRevision: 1.5.1
+      targetRevision: 1.8.0
       chart: longhorn
       helm:
         releaseName: longhorn
