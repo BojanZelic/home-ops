@@ -7,7 +7,7 @@ spec:
   project: home-ops
   sources:
     - repoURL: https://kube-vip.github.io/helm-charts
-      targetRevision: 0.4.4
+      targetRevision: 0.6.6
       chart: kube-vip
       helm:
         releaseName: kube-vip
