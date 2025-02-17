@@ -1,0 +1,190 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sbfspot-config
+  namespace: home-assistant
+data:
+  SBFspot.default.cfg: |
+    # If IP_Address is set to 0.0.0.0 SBFspot will auto-detect connected inverters
+    IP_Address=192.168.23.18
+
+    # User password (default 0000)
+    Password=0000
+
+    # Plantname
+    Plantname=MyPlant
+
+    # OutputPath (Place to store CSV files)
+    # Windows: C:\Users\Public\SMAdata\%Y
+    # Linux  : /home/pi/smadata/%Y
+    # %Y %m and %d will be expanded to Year Month and Day
+    OutputPath=/home/pi/smadata/%Y
+
+    # OutputPathEvents (Place to store CSV files for events)
+    # If omitted, OutputPath is used
+    OutputPathEvents=/home/pi/smadata/%Y/Events
+
+    # Timezone
+    # Select the right timezone in date_time_zonespec.csv
+    # e.g. Timezone=Europe/Brussels
+    Timezone=America/Phoenix
+
+    # Position of pv-plant https://www.gps-coordinates.net/maps
+    Latitude=33.69
+    Longitude=-112
+
+    # Locale
+    # Translate Entries in CSV files
+    # Supported locales: de-DE;en-US;fr-FR;nl-NL;es-ES;it-IT
+    # Default en-US
+    Locale=en-US
+
+    # DateTimeFormat (default %d/%m/%Y %H:%M:%S)
+    # For details see strftime() function
+    # http://www.cplusplus.com/reference/clibrary/ctime/strftime/
+    DateTimeFormat=%d/%m/%Y %H:%M:%S
+
+    # DateFormat (default %d/%m/%Y)
+    DateFormat=%d/%m/%Y
+
+    # TimeFormat (default %H:%M:%S)
+    TimeFormat=%H:%M:%S
+
+    # DecimalPoint (comma/point default comma)
+    DecimalPoint=dot
+
+    # Calculate Missing SpotValues
+    # If set to 1, values not provided by inverter will be calculated
+    # eg: Pdc1 = Idc1 * Udc1
+    CalculateMissingSpotValues=0
+
+    # SynchTime (0-30 - 0=disabled, 1=once a day (default), 7=once a week, 30=once a month)
+    # If set to non-zero value, the plant time is synchronised with local host time
+    # Some inverters don't have a real-time clock
+    SynchTime=7
+
+    # SynchTimeLow (1-120 - default 1)
+    # SynchTimeHigh (1200-3600 - default 3600)
+    # Plant time is adjusted to local host time when SynchTime=1 and
+    # time difference is between SynchTimeLow and SynchTimeHigh limits
+    SynchTimeLow=60
+    SynchTimeHigh=3600
+
+    # SunRSOffset
+    # Offset to start before sunrise and end after sunset (0-3600 - default 900 seconds)
+    SunRSOffset=900
+
+    # With CSV_* settings you can define the CSV file format
+
+    # CSV_Export (default 1 = Enabled)
+    # Enables or disables the CSV Export functionality
+    CSV_Export=0
+
+    # CSV_ExtendedHeader (default 1 = On)
+    # Enables or disables the SMA extended header info (8 lines)
+    # isep=;
+    # Version CSV1|Tool SBFspot|Linebreaks CR/LF|Delimiter semicolon|Decimalpoint comma|Precision 3
+    # etc...
+    # This is usefull for manual data upload to pvoutput.org
+    CSV_ExtendedHeader=1
+
+    # CSV_Header (default 1 = On)
+    # Enables or disables the CSV data header info (1 line)
+    # dd/MM/yyyy HH:mm:ss;kWh;kW
+    # This is usefull for manual data upload to pvoutput.org
+    # If CSV_ExtendedHeader is enabled, CSV_Header is also enabled
+    CSV_Header=1
+
+    # CSV_SaveZeroPower (default 1 = On)
+    # When enabled, daily csv files contain all data from 00:00 to 23:55
+    # This is usefull for manual data upload to pvoutput.org
+    CSV_SaveZeroPower=1
+
+    # CSV_Delimiter (comma/semicolon default semicolon)
+    CSV_Delimiter=semicolon
+
+    # CSV_Spot_TimeSource (Inverter|Computer default Inverter)
+    CSV_Spot_TimeSource=inverter
+
+    # CSV_Spot_WebboxHeader (Default 0 = Off)
+    # When enabled, use Webbox style header (DcMs.Watt[A];DcMs.Watt[B]...)
+    CSV_Spot_WebboxHeader=0
+
+    SQL_Database=/home/pi/smadata/SBFspot.db
+
+    # Full path to mosquitto_pub executable
+    MQTT_Publisher=/usr/bin/mosquitto_pub
+
+    # IP address or DNS name of MQTT Broker
+    # Don't use test broker for production environments
+    #MQTT_Host=test.mosquitto.org
+    MQTT_Host=mosquitto.mqtt.svc.cluster.local
+
+    # Port (Optional)
+    #MQTT_Port=
+
+    # Topic Name
+    # When using public broker like test.mosquitto.org make sure to define a unique topic name
+    # by appending the serial number of the inverter to avoid you receive data of another SBFspot user.
+    MQTT_Topic=homeassistant/sbfspot_{serial}
+
+    # Format of message items to be sent
+    # JSON: MQTT_ItemFormat="{key}": {value}
+    # TEXT: MQTT_ItemFormat={key}:{value}
+    # XML:  MQTT_ItemFormat=<item name="{key}" value="{value}" />
+    MQTT_ItemFormat="{key}": {value}
+
+    # MQTT_ItemDelimiter (none|blank|comma|semicolon default comma)
+    # JSON: MQTT_ItemDelimiter=comma
+    # TEXT: MQTT_ItemDelimiter=semicolon
+    # XML : MQTT_ItemDelimiter=none
+    MQTT_ItemDelimiter=comma
+
+    # Mandatory arguments for mosquitto_pub executable
+    # JSON: MQTT_PublisherArgs=-h {host} -t {topic} -m "{{message}}"
+    # TEXT: MQTT_PublisherArgs=-h {host} -t {topic} -m "{message}"
+    # XML : MQTT_PublisherArgs=-h {host} -t {topic} -m "<mqtt_message>{message}</mqtt_message>"
+    MQTT_PublisherArgs=-h {host} -t {topic} -m "{{message}}"
+
+    # Data to be published (comma delimited)
+    MQTT_Data=Timestamp,SunRise,SunSet,InvSerial,InvName,InvTime,InvStatus,InvTemperature,InvGridRelay,EToday,ETotal,PACTot,UDC1,UDC2,IDC1,IDC2,PDC1,PDC2
+
+    # Possible keywords are (if supported by your inverter):
+    # SBFspot Alias   Code                Description
+    # =======================================================================
+    # Timestamp                           Current date/time
+    # InvTime                             Inverter date/time
+    # SunRise                             Sunrise time
+    # SunSet                              Sunset time
+    # InvSerial                           Serial Number
+    # InvName         NameplateLocation   Device name
+    # InvClass        NameplateMainModel  Device class
+    # InvType         NameplateModel      Device type
+    # InvSwVer        NameplatePkgRev     Software package
+    # InvStatus       OperationHealth     Condition
+    # InvTemperature  CoolsysTmpNom       Operating condition temperature
+    # InvGridRelay    OperationGriSwStt   Grid relay/contactor
+    # ETotal          MeteringTotWhOut    Total yield
+    # EToday          MeteringDyWhOut     Day yield
+    # PACTot          GridMsTotW          Power
+    # PDC1/PDC2       DcMsWatt            DC power input String 1/2
+    # UDC1/UDC2       DcMsVol             DC voltage input String 1/2
+    # IDC1/IDC2       DcMsAmp             DC current input String 1/2
+    # OperTm          MeteringTotOpTms    Operating time
+    # FeedTm          MeteringTotFeedTms  Feed-in time
+    # PAC1            GridMsWphsA         Power L1
+    # PAC2            GridMsWphsB         Power L2
+    # PAC3            GridMsWphsC         Power L3
+    # UAC1            GridMsPhVphsA       Grid voltage phase L1
+    # UAC2            GridMsPhVphsB       Grid voltage phase L2
+    # UAC3            GridMsPhVphsC       Grid voltage phase L3
+    # IAC1            GridMsAphsA_1       Grid current phase L1
+    # IAC2            GridMsAphsB_1       Grid current phase L2
+    # IAC3            GridMsAphsC_1       Grid current phase L3
+    # GridFreq        GridMsHz            Grid frequency
+    # BatTmpVal       BatTmpVal           Battery temperature
+    # BatVol          BatVol              Battery voltage
+    # BatAmp          BatAmp              Battery current
+    # BatChaStt       BatChaStt           Current battery charge status
+
+    # End of Config

@@ -18,9 +18,7 @@ spec:
       containers:
       - name: sbfspot
         image: sbfspot/sbfspot:latest
-        args:
-        - "-installer"
-        - "-password:$(SBF_PASSWORD)"  # Reference the password from environment variable
+        command: ["/scripts/start.sh"]
         env:
         - name: CSV_STORAGE
           value: "1"
@@ -33,6 +31,8 @@ spec:
             secretKeyRef:
               name: sbfspot-secrets
               key: password
+        - name: SBFSPOT_ARGS
+          value: "-v3 -installer -password:$(SBF_PASSWORD)"
         resources:
           requests:
             cpu: "100m"
@@ -40,3 +40,16 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/sbfspot-default
+        - name: script-volume
+          mountPath: /scripts
+      volumes:
+      - name: config-volume
+        configMap:
+          name: sbfspot-config
+      - name: script-volume
+        configMap:
+          name: sbfspot-script
+          defaultMode: 0755
