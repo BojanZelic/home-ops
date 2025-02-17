@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sbfspot
+  namespace: home-assistant
+  labels:
+    app: sbfspot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sbfspot
+  template:
+    metadata:
+      labels:
+        app: sbfspot
+    spec:
+      containers:
+      - name: sbfspot
+        image: sbfspot/sbfspot:latest
+        args:
+        - "-installer"
+        - "-password:$(SBF_PASSWORD)"  # Reference the password from environment variable
+        env:
+        - name: CSV_STORAGE
+          value: "1"
+        - name: ENABLE_SBFSPOT
+          value: "1"
+        - name: MQTT_ENABLE
+          value: "1"
+        - name: SBF_PASSWORD  # Environment variable that will contain the secret value
+          valueFrom:
+            secretKeyRef:
+              name: sbfspot-secrets
+              key: password
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"

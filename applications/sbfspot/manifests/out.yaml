@@ -1,0 +1,13 @@
+kind: SealedSecret
+apiVersion: bitnami.com/v1alpha1
+metadata:
+  name: sbfspot-secrets
+  namespace: home-assistant
+spec:
+  template:
+    metadata:
+      name: sbfspot-secrets
+      namespace: home-assistant
+    type: Opaque
+  encryptedData:
+    password: AgBfVsjUJguXqg45U+OUwpTz4oD1Zw65r/AbqY5pxN2A0YcGHvW2j6a33D1jgiVF40C7XfRZoJlXlaZXQQElNlj9yHAuvK8lt2mwgPRhvYhmOil1WnpN06UWJNTMFlvektKaUBrgRq+iRS6/r29og1mZZMFRLoKZw65USWiGgBfW5iEe+9MYY0kG6cQPxLTmDlDYnLMNzKVMkqYiZwzMM2wnDNOAq9cBlgcFQqf4aNI6Dh4PhQYBTYfiqts7k47IG6dY4O2z0ZKbM66TEL9M0is6UEJUs9BqjqTKZDgb+MUn3iseL8ZGDI+8wK7f1fbzVR1FgYWWbYuartztFkU8OJRSGevVlvJnhdjRrH1Vec0zGKeamOk58Aa1F3Y1rBxmWjccRkv2p79W6rX+mZCL55STtROUG8cx8Xc9RLt69E0YYxI61D5CDgCl1Xjs88pth1j+YGv8124hMF6wjilPNJ2yaFQYnvlDHalpOeb3CQg4sJTWTS9ehrlElrcHA4nQKRhDtGhAC7774wOd0Jp/leR4LlGagCmh4j814E9f5gv3lqQs/j8zFzgJEnIZSAQpXUD6RVEn3QXxL4iiXfGT7NqWyItSe+cYzwd3vk/jeeJFk7Ck3iniHMIBXlLGXt9rc25RqwM9ab43h+TYpUbH+lOJ9gYd6DcMwubrEufvckpF8zMkBve/7HWDQftVZkIZgkr91Fu+TSrk222B
