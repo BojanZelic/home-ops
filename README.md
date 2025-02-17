@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://camo.githubusercontent.com/5b298bf6b0596795602bd771c5bddbb963e83e0f/68747470733a2f2f692e696d6775722e636f6d2f7031527a586a512e706e67" align="center" width="144px" height="144px"/>
+<img src="https://camo.githubusercontent.com/d2689c2c178ad21d7c91c2fd4fe3753643499d34e789d177ece4ed3a2eec2782/68747470733a2f2f692e696d6775722e636f6d2f676476426b4e452e706e67" align="center" width="144px" height="144px"/>
 
 ### Zelic.io Home K8s Cluster :octocat:
 
