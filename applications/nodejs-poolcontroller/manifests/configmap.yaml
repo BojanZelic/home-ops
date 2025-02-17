@@ -234,12 +234,12 @@ data:
           "homeAssistant": {
             "name": "Home Assistant",
             "type": "mqtt",
-            "enabled": false,
+            "enabled": true,
             "fileName": "homeassistant.json",
             "globals": {},
             "options": {
               "protocol": "mqtt://",
-              "host": "192.168.0.1",
+              "host": "mosquitto.mqtt.svc.cluster.local",
               "port": 1883,
               "username": "",
               "password": "",

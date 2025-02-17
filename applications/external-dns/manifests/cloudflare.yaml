@@ -18,6 +18,7 @@ spec:
       - name: external-dns
         image: registry.k8s.io/external-dns/external-dns
         args:
+        - --source=service
         - --source=ingress # ingress is also possible
         - --domain-filter=zelic.io # (optional) limit to only example.com domains; change to match the zone created above.
         - --exclude-domains=internal.zelic.io
