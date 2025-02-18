@@ -3,5 +3,5 @@ kind: Kustomization
 
 namespace: system-upgrade
 resources:
-  - github.com/rancher/system-upgrade-controller?ref=v0.13.2
+  - github.com/rancher/system-upgrade-controller?ref=v0.15.0
   - manifests/plan.yaml
