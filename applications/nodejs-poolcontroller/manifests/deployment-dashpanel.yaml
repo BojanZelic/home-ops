@@ -17,13 +17,16 @@ spec:
           name: nodejs-poolcontroller-dashpanel
           ports:
             - containerPort: 5150
-          # volumeMounts:
-          # - name: config
-          #   mountPath: /app/config.json
+          volumeMounts:
+          - name: config
+            mountPath: /app/config.json
+          env:
+            - name: TZ
+              value: America/Phoenix
       volumes:
       - name: config
         configMap:
-          name: poolcontroller-config
+          name: poolcontroller-dash-config
           items:
           - key: config.json
             path: config.json

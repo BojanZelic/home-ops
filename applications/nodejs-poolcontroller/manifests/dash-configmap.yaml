@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: poolcontroller-dash-config
+data:
+  config.json: |
+    {
+      "web": {
+        "servers": {
+          "http2": {
+            "enabled": false
+          },
+          "http": {
+            "enabled": true,
+            "ip": "0.0.0.0",
+            "port": 5150,
+            "httpsRedirect": false,
+            "authentication": "none",
+            "authFile": "/users.htpasswd"
+          },
+          "https": {
+            "enabled": false,
+            "ip": "0.0.0.0",
+            "port": 5151,
+            "authentication": "none",
+            "authFile": "/users.htpasswd",
+            "sslKeyFile": "/ssl/privkey.pem",
+            "sslCertFile": "/ssl/cert.pem"
+          },
+          "mdns": {
+            "enabled": false
+          },
+          "sspd": {
+            "enabled": false
+          },
+          "services": {}
+        },
+        "services": {
+          "protocol": "http://",
+          "ip": "nodejs-poolcontroller.home-assistant.svc.cluster.local",
+          "port": 4200,
+          "useProxy": true,
+          "options": {},
+          "socket": {
+            "protocol": "ws://",
+            "upgrade": false,
+            "allowEIO3": true,
+            "reconnectionDelay": 2000,
+            "reconnection": true,
+            "reconnectionDelayMax": 20000
+          }
+        },
+        "socket": {
+          "sendLogMessages": false
+        }
+      },
+      "dashboard": {
+        "startPage": "index.html"
+      },
+      "log": {
+        "app": {
+          "enabled": true,
+          "level": "info"
+        }
+      },
+      "uploads": {
+        "logFile": {
+          "path": "uploads/"
+        }
+      },
+      "appVersion": {
+        "installed": "8.0.0",
+        "nextCheckTime": "2025-02-22T22:08:54.107+0000",
+        "githubRelease": "8.0.0",
+        "status": "current",
+        "gitLocalBranch": "master",
+        "gitLocalCommit": "44a71dd52b5cbe1fc0ec32f329361ee6f1f63d1a"
+      }
+    }
