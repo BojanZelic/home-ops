@@ -21,16 +21,10 @@ spec:
           - name: config
             mountPath: /app/config.json
             subPath: config.json
-          - name: tz-config
-            mountPath: /etc/timezone
-            subPath: timezone
           env:
             - name: TZ
               value: America/Phoenix
       volumes:
-      - name: tz-config
-        configMap:
-          name: tz-config
       - name: config
         configMap:
           name: poolcontroller-dash-config
