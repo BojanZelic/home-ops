@@ -20,6 +20,7 @@ spec:
           volumeMounts:
           - name: config
             mountPath: /app/config.json
+            subPath: config.json
           env:
             - name: TZ
               value: America/Phoenix
