@@ -13,7 +13,7 @@ spec:
         app: nodejs-poolcontroller
     spec:
       containers:
-        - image: tagyoureit/njspc:latest
+        - image: ghcr.io/bojanzelic/nodejs-poolcontroller:latest
           name: nodejs-poolcontroller
           ports:
             - containerPort: 4200
