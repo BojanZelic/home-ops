@@ -6,12 +6,19 @@ metadata:
 spec:
   project: home-ops
   sources:
+    - repoURL: https://zelic-io.github.io/charts/
+      targetRevision: 0.8.0
+      chart: cloudflare-zero-trust-operator
+      helm:
+        releaseName: cf-zero-trust-operator
+        valuesObject:
+          secretRef: cloudflare-creds
     - repoURL: https://github.com/BojanZelic/home-ops.git
       path: applications/cloudflare-zero-trust/manifests
       targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: zero-trust-system
-  syncPolicy: {}
-    # automated: {}
-      # prune: true
+  syncPolicy:
+    automated:
+      prune: true
